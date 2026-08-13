@@ -1,0 +1,57 @@
+requerimientos funcionales:
+
+1. Gestión de Inventario y Productos
+Registro de repuestos: Registrar, editar y eliminar piezas (código, nombre, marca, modelo de vehículo compatible, precio y stock).
+
+Búsqueda avanzada: Buscar autopartes por número de pieza (OEM), categoría, marca de vehículo o año.
+
+Control de stock mínimo: Emitir una alerta automática cuando el inventario de un repuesto esté por debajo del mínimo establecido.
+
+Categorización: Clasificar las piezas por familias (motor, frenos, suspensión, electricidad, carrocería, etc.).
+
+Ubicación en depósito: Registrar la ubicación física de cada producto en el almacén (estante, pasillo, depósito).
+
+2. Pedidos y Ventas
+Creación de pedidos: Crear y registrar órdenes de compra de clientes, tanto en mostrador como en línea.
+
+Estado del pedido: Consultar y actualizar el estado de una orden (pendiente, en preparación, enviado, entregado, cancelado).
+
+Facturación: Generar e imprimir facturas y comprobantes de pago vinculados a cada venta.
+
+Gestión de devoluciones: Procesar devoluciones o garantías de repuestos reingresando automáticamente el producto al stock.
+
+Reserva de productos: Apartar o reservar piezas del inventario cuando un cliente realiza un pedido con seña o pago pendiente.
+
+3. Gestión de Clientes
+Registro de clientes: Guardar y actualizar los datos del cliente (nombre, CUIT/DNI, teléfono, dirección y correo).
+
+Historial de compras: Consultar el historial de repuestos comprados anteriormente por un cliente específico.
+
+Tipos de cliente: Asignar listas de precios o descuentos según el perfil del cliente (minorista, taller mecánico, mayorista).
+
+4. Proveedores y Compras
+Registro de proveedores: Almacenar datos de contacto y marcas/piezas que suministra cada proveedor.
+
+Órdenes de compra a proveedores: Generar pedidos de reabastecimiento de piezas a los proveedores.
+
+Recepción de mercadería: Registrar el ingreso de nuevo stock al sistema verificando la orden de compra recibida.
+
+Comparativa de precios: Consultar qué proveedor ofrece un repuesto determinado a mejor costo o tiempo de entrega.
+
+5. Envíos y Logística
+Métodos de entrega: Asignar la modalidad de entrega a la orden (retiro en local, flete, correo expreso).
+
+Generación de etiquetas: Imprimir etiquetas con los datos de envío y la lista de contenido del paquete.
+
+Seguimiento de envío: Registrar el código de seguimiento (tracking) asociado al paquete despachado.
+
+6. Administración y Reportes
+Roles y permisos: Definir perfiles de usuario con distintos accesos (vendedor, cajero, administrador, encargado de depósito).
+
+Reporte de ventas: Generar informes periódicos de ventas (diarios, semanales, mensuales).
+
+Reporte de productos más vendidos: Consultar cuáles son las piezas de mayor rotación en el negocio.
+
+Reporte de sin stock / bajo stock: Exportar un listado con las autopartes agotadas o próximas a agotarse.
+
+Copias de seguridad: Permitir realizar respaldos (backups) manuales o automáticos de la base de datos.
