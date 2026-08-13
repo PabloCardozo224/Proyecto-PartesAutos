@@ -1,0 +1,58 @@
+Entrevista y relevamiento de requerimientos
+1 Introducción
+Se realizó una charla con el responsable de una fábrica de autopartes con el objetivo de conocer las necesidades de la empresa y determinar los requerimientos necesarios para desarrollar una página web y un sistema informático que permita gestionar los procesos de la fábrica.
+Durante la entrevista, el cliente explicó las necesidades actuales de la empresa y los problemas que busca solucionar con la informatización de sus procesos.
+
+2 Diálogo con el cliente
+Cliente: Actualmente queremos informatizar los procesos de nuestra fábrica de autopartes. Necesitamos tener un software que nos permita realizar y controlar el proceso de producción de cualquier parte de un auto a nivel nacional.
+Nosotros: ¿Qué información necesitan registrar sobre cada autoparte?
+Cliente: queremos poder gestionar los productos que fabricamos, saber qué piezas tenemos disponibles y poder controlar los pedidos y envíos.
+Nosotros: ¿A quiénes les venden o envían las piezas?
+Cliente: Nosotros somos proveedores a nivel nacional. Enviamos las piezas a diferentes concesionarias y necesitamos poder visualizar las partes que fueron enviadas a las distintas provincias.
+Nosotros: ¿También necesitan controlar los pedidos que reciben?
+Cliente: Sí. Queremos poder visualizar los pedidos que recibimos y realizar un seguimiento de ellos.
+Nosotros: ¿Qué tipo de información les gustaría visualizar sobre los pedidos?
+Cliente: Nos gustaría saber qué productos se solicitaron, las cantidades, a qué lugar deben enviarse y el estado del pedido.
+Nosotros: ¿Necesitan generar informes sobre la información almacenada?
+Cliente: Sí. Queremos un dashboard que nos permita generar informes, archivos y estadísticas. También queremos visualizar información relacionada con las partes enviadas a las provincias y los pedidos que recibimos.
+Nosotros: ¿Qué estadísticas consideran importantes?
+Cliente: Necesitamos tener gráficas y estadísticas que puedan consultarse por semanas 
+Nosotros: ¿Qué información debería aparecer en esas gráficas?
+Cliente: Por ejemplo, la cantidad de pedidos recibidos, las piezas fabricadas, las piezas enviadas y la distribución de los envíos por provincia.
+Nosotros: ¿También necesitan gestionar la información de los empleados?
+Cliente: Sí. Queremos poder visualizar los empleados que trabajan en nuestra empresa.
+.Nosotros: Y los clientes pueden ver informacion sobre sus pedidos?
+Cliente: Sí. Queremos tener una vista de administrador y otra de cliente. También debería existir una vista para los empleados dependiendo de lo que necesiten consultar.
+Nosotros: ¿Qué podría hacer el administrador?
+Cliente: El administrador debería poder gestionar los productos, empleados, pedidos, envíos y consultar las estadísticas.
+Nosotros: ¿Y qué información podría consultar el cliente?
+Cliente: El cliente debería poder consultar sus pedidos, productos disponibles y el estado de los envíos.
+Nosotros: ¿Qué servicios esperan que les proporcione la página web?
+Cliente: Queremos que la página permita a nuestros clientes conocer nuestros productos, gestionar pedidos y consultar su estado.
+Nosotros: ¿Necesitan que el sistema permita descargar información o generar archivos?
+Cliente: Sí, queremos que el dashboard pueda generar informes y archivos con la información de la empresa.
+Nosotros: ¿También necesitan una estimación del costo del proyecto?
+Cliente: Sí. Queremos conocer el presupuesto de cada parte del proyecto por separado.
+Nosotros: ¿Qué aspectos quieren que aparezcan en el presupuesto?
+Cliente: Queremos conocer el costo del software, la instalación y las capacitaciones necesarias para que los empleados puedan utilizar el sistema.
+_________________________________________________________________________
+3  Objetivo
+Desarrollar un sistema informático para una fábrica de autopartes que permita gestionar y centralizar la información de productos, fabricación, pedidos, clientes, empleados y envíos a nivel nacional, incorporando una página web y un dashboard con estadísticas e informes para facilitar el control y la toma de decisiones de la empresa. 
+______________________________________________________________
+
+4  Descripción del sistema propuesto
+
+A partir de la entrevista, se pueden identificar los siguientes módulos:
+Gestión de productos: registrar, modificar, eliminar y consultar autopartes.
+Gestión de fabricación: registrar y controlar procesos de manufactura.
+Gestión de pedidos: registrar y consultar pedidos recibidos.
+Gestión de envíos: controlar las piezas enviadas a las diferentes provincias.
+Gestión de clientes: almacenar y consultar información de las concesionarias.
+Gestión de empleados: registrar y consultar empleados.
+Usuarios y permisos: administrar los diferentes niveles de acceso.
+Dashboard: visualizar estadísticas y gráficos.
+Informes: generar y descargar archivos con información de la empresa.
+Página web: mostrar la empresa, sus productos y servicios.
+Soporte y mantenimiento: solucionar problemas y mantener actualizado el sistema.
+
+
