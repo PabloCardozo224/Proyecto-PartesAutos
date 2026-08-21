@@ -1,3 +1,6 @@
+
+
+
 Clase abstracta Vehiculo:
 
 public abstract class Vehiculo {
@@ -236,6 +239,7 @@ public class Camion extends Vehiculo{
 clase Padre Persona:
 
 
+
 package empresaautopartes;
 
 public abstract class Persona {
@@ -245,6 +249,7 @@ public abstract class Persona {
     protected String direccion;
     protected int telefono;
     protected int edad;
+    protected  int dni;
     protected boolean frecuente;
     
     public abstract void mostrarPersona();
@@ -297,6 +302,14 @@ public abstract class Persona {
         this.edad = edad;
     }
 
+    public int getDni() {
+        return dni;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
+    }
+
     public boolean isFrecuente() {
         return frecuente;
     }
@@ -305,17 +318,19 @@ public abstract class Persona {
         this.frecuente = frecuente;
     }
 
-    public Persona(String nombre, String apellido, String mail, String direccion, int telefono, int edad, boolean frecuente) {
+    public Persona(String nombre, String apellido, String mail, String direccion, int telefono, int edad, int dni, boolean frecuente) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.mail = mail;
         this.direccion = direccion;
         this.telefono = telefono;
         this.edad = edad;
+        this.dni = dni;
         this.frecuente = frecuente;
     }
     
 }
+
 
 clase hija cliente:
 
@@ -425,7 +440,7 @@ import javax.swing.JOptionPane;
 public class Empleado extends Persona {
     private int sueldo;
     private int legajo;
-    private int horario;
+    private String horario;
     private int antiguedad;
     
     @Override 
@@ -452,11 +467,11 @@ public class Empleado extends Persona {
         this.legajo = legajo;
     }
 
-    public int getHorario() {
+    public String getHorario() {
         return horario;
     }
 
-    public void setHorario(int horario) {
+    public void setHorario( String horario) {
         this.horario = horario;
     }
 
@@ -524,7 +539,7 @@ public class Empleado extends Persona {
         this.frecuente = frecuente;
     }
 
-    public Empleado(int sueldo, int legajo, int horario, int antiguedad, String nombre, String apellido, String mail, String direccion, int telefono, int edad, boolean frecuente) {
+    public Empleado(int sueldo, int legajo, String horario, int antiguedad, String nombre, String apellido, String mail, String direccion, int telefono, int edad, boolean frecuente) {
         super(nombre, apellido, mail, direccion, telefono, edad, frecuente);
         this.sueldo = sueldo;
         this.legajo = legajo;
@@ -532,4 +547,226 @@ public class Empleado extends Persona {
         this.antiguedad = antiguedad;
     }
 }
+
+Clase abstracta Inventario:
+
+package empresaautopartes;
+
+public abstract class Inventario {
+    
+    protected int codigoParte;
+    protected String UbicacionParte;
+    
+    public abstract void mostrarInventario();
+
+    public int getCodigoParte() {
+        return codigoParte;
+    }
+
+    public void setCodigoParte(int codigoParte) {
+        this.codigoParte = codigoParte;
+    }
+
+    public String getUbicacionParte() {
+        return UbicacionParte;
+    }
+
+    public void setUbicacionParte(String UbicacionParte) {
+        this.UbicacionParte = UbicacionParte;
+    }
+
+    public Inventario(int codigoParte, String UbicacionParte) {
+        this.codigoParte = codigoParte;
+        this.UbicacionParte = UbicacionParte;
+    }
+}
+
+clase hija chasis:
+
+package empresaautopartes;
+
+import javax.swing.JOptionPane;
+
+public class Chasis extends Inventario{
+
+    private int año;
+    private String parte;
+    private String color;
+
+    @Override
+    public void mostrarInventario(){
+    JOptionPane.showInputDialog("año" + año + "parte" + parte + "color" + color);
+    JOptionPane.showInputDialog("codigo de Parte" + codigoParte + "ubicacion de la parte" + UbicacionParte);
+    }
+
+    public int getAño() {
+        return año;
+    }
+
+    public void setAño(int año) {
+        this.año = año;
+    }
+
+    public String getParte() {
+        return parte;
+    }
+
+    public void setParte(String parte) {
+        this.parte = parte;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public int getCodigoParte() {
+        return codigoParte;
+    }
+
+    public void setCodigoParte(int codigoParte) {
+        this.codigoParte = codigoParte;
+    }
+
+    public String getUbicacionParte() {
+        return UbicacionParte;
+    }
+
+    public void setUbicacionParte(String UbicacionParte) {
+        this.UbicacionParte = UbicacionParte;
+    }
+
+    public Chasis(int año, String parte, String color, int codigoParte, String UbicacionParte) {
+        super(codigoParte, UbicacionParte);
+        this.año = año;
+        this.parte = parte;
+        this.color = color;
+    }
+}
+
+clase hja mecanica:
+
+package empresaautopartes;
+
+import javax.swing.JOptionPane;
+
+public class Mecanica extends Inventario{
+private int año;
+private String funcion;
+
+@Override
+public void mostrarInventario(){
+JOptionPane.showInputDialog("año" + año + "funcion" + funcion);
+ JOptionPane.showInputDialog("codigo de Parte" + codigoParte + "ubicacion de la parte" + UbicacionParte);
+}
+
+    public int getAño() {
+        return año;
+    }
+
+    public void setAño(int año) {
+        this.año = año;
+    }
+
+    public String getFuncion() {
+        return funcion;
+    }
+
+    public void setFuncion(String funcion) {
+        this.funcion = funcion;
+    }
+
+    public int getCodigoParte() {
+        return codigoParte;
+    }
+
+    public void setCodigoParte(int codigoParte) {
+        this.codigoParte = codigoParte;
+    }
+
+    public String getUbicacionParte() {
+        return UbicacionParte;
+    }
+
+    public void setUbicacionParte(String UbicacionParte) {
+        this.UbicacionParte = UbicacionParte;
+    }
+
+    public Mecanica(int año, String funcion, int codigoParte, String UbicacionParte) {
+        super(codigoParte, UbicacionParte);
+        this.año = año;
+        this.funcion = funcion;
+    }
+
+}
+clase Pedido:
+
+package empresaautopartes;
+
+import javax.swing.JOptionPane;
+
+public class Pedido {
+
+    private String tipoPedido;
+    private String descripcion;
+    private String medioPago;
+    private String fechaEntrega;
+    private int total;
+    
+    public void mostrarPedido(){
+    JOptionPane.showInputDialog("tipo de pedido" + tipoPedido + "descripcion" + descripcion + "medio de Pago" + medioPago + "fecha de entrega" + fechaEntrega + "total" + total);
+    }
+
+    public String getTipoPedido() {
+        return tipoPedido;
+    }
+
+    public void setTipoPedido(String tipoPedido) {
+        this.tipoPedido = tipoPedido;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getMedioPago() {
+        return medioPago;
+    }
+
+    public void setMedioPago(String medioPago) {
+        this.medioPago = medioPago;
+    }
+
+    public String getFechaEntrega() {
+        return fechaEntrega;
+    }
+
+    public void setFechaEntrega(String fechaEntrega) {
+        this.fechaEntrega = fechaEntrega;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    public Pedido(String tipoPedido, String descripcion, String medioPago, String fechaEntrega, int total) {
+        this.tipoPedido = tipoPedido;
+        this.descripcion = descripcion;
+        this.medioPago = medioPago;
+        this.fechaEntrega = fechaEntrega;
+        this.total = total;
+    }
+}
+
 
