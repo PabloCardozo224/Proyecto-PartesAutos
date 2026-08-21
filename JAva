@@ -171,4 +171,365 @@ public class Moto extends Vehiculo {
     }
 }
 
+Clase hija Camion:
+
+package empresaautopartes;
+
+import javax.swing.JOptionPane;
+
+public class Camion extends Vehiculo{
+    
+    private  String problemaCamion;
+    
+    @Override
+    public void mostrarVehiculo(){
+    JOptionPane.showInputDialog("problema camion" + problemaCamion);
+    JOptionPane.showInputDialog("marca" + marca +"/n año " + año + "/n kilometraje" + kilometraje + "/n electronico" + electronico);
+    }
+
+    public String getProblemaCamion() {
+        return problemaCamion;
+    }
+
+    public void setProblemaCamion(String problemaCamion) {
+        this.problemaCamion = problemaCamion;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public int getAño() {
+        return año;
+    }
+
+    public void setAño(int año) {
+        this.año = año;
+    }
+
+    public int getKilometraje() {
+        return kilometraje;
+    }
+
+    public void setKilometraje(int kilometraje) {
+        this.kilometraje = kilometraje;
+    }
+
+    public boolean isElectronico() {
+        return electronico;
+    }
+
+    public void setElectronico(boolean electronico) {
+        this.electronico = electronico;
+    }
+
+    public Camion(String problemaCamion, String marca, int año, int kilometraje, boolean electronico) {
+        super(marca, año, kilometraje, electronico);
+        this.problemaCamion = problemaCamion;
+    }
+}
+
+clase Padre Persona:
+
+
+package empresaautopartes;
+
+public abstract class Persona {
+    protected String nombre;
+    protected String apellido;
+    protected String mail;
+    protected String direccion;
+    protected int telefono;
+    protected int edad;
+    protected boolean frecuente;
+    
+    public abstract void mostrarPersona();
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public boolean isFrecuente() {
+        return frecuente;
+    }
+
+    public void setFrecuente(boolean frecuente) {
+        this.frecuente = frecuente;
+    }
+
+    public Persona(String nombre, String apellido, String mail, String direccion, int telefono, int edad, boolean frecuente) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.mail = mail;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.edad = edad;
+        this.frecuente = frecuente;
+    }
+    
+}
+
+clase hija cliente:
+
+package empresaautopartes;
+
+import javax.swing.JOptionPane;
+
+public class Cliente extends Persona{
+   
+   private int id_cliente;
+   private int cantidadPedidos;
+   
+   @Override
+   
+   public void mostrarPersona(){
+   JOptionPane.showInputDialog("id cliente" + id_cliente + "cantidad de pedidos" + cantidadPedidos);
+   JOptionPane.showInputDialog("Nombre" + nombre + "Apellido" + apellido + "mail" + mail + "direccion" + direccion + "telefono" + telefono + "edad" + edad + "frecuente" + frecuente);
+   }
+
+    public int getId_cliente() {
+        return id_cliente;
+    }
+
+    public void setId_cliente(int id_cliente) {
+        this.id_cliente = id_cliente;
+    }
+
+    public int getCantidadPedidos() {
+        return cantidadPedidos;
+    }
+
+    public void setCantidadPedidos(int cantidadPedidos) {
+        this.cantidadPedidos = cantidadPedidos;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public boolean isFrecuente() {
+        return frecuente;
+    }
+
+    public void setFrecuente(boolean frecuente) {
+        this.frecuente = frecuente;
+    }
+
+    public Cliente(int id_cliente, int cantidadPedidos, String nombre, String apellido, String mail, String direccion, int telefono, int edad, boolean frecuente) {
+        super(nombre, apellido, mail, direccion, telefono, edad, frecuente);
+        this.id_cliente = id_cliente;
+        this.cantidadPedidos = cantidadPedidos;
+    }
+   
+}
+
+clase hija cliente:
+
+
+package empresaautopartes;
+
+import javax.swing.JOptionPane;
+
+public class Empleado extends Persona {
+    private int sueldo;
+    private int legajo;
+    private int horario;
+    private int antiguedad;
+    
+    @Override 
+    
+    public void mostrarPersona(){
+    JOptionPane.showInputDialog("sueldo" + sueldo + "legajo" + legajo + "horario" + horario + "antiiguedad" + antiguedad);
+     JOptionPane.showInputDialog("Nombre" + nombre + "Apellido" + apellido + "mail" + mail + "direccion" + direccion + "telefono" + telefono + "edad" + edad + "frecuente" + frecuente);
+  
+    }
+
+    public int getSueldo() {
+        return sueldo;
+    }
+
+    public void setSueldo(int sueldo) {
+        this.sueldo = sueldo;
+    }
+
+    public int getLegajo() {
+        return legajo;
+    }
+
+    public void setLegajo(int legajo) {
+        this.legajo = legajo;
+    }
+
+    public int getHorario() {
+        return horario;
+    }
+
+    public void setHorario(int horario) {
+        this.horario = horario;
+    }
+
+    public int getAntiguedad() {
+        return antiguedad;
+    }
+
+    public void setAntiguedad(int antiguedad) {
+        this.antiguedad = antiguedad;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public boolean isFrecuente() {
+        return frecuente;
+    }
+
+    public void setFrecuente(boolean frecuente) {
+        this.frecuente = frecuente;
+    }
+
+    public Empleado(int sueldo, int legajo, int horario, int antiguedad, String nombre, String apellido, String mail, String direccion, int telefono, int edad, boolean frecuente) {
+        super(nombre, apellido, mail, direccion, telefono, edad, frecuente);
+        this.sueldo = sueldo;
+        this.legajo = legajo;
+        this.horario = horario;
+        this.antiguedad = antiguedad;
+    }
+}
 
