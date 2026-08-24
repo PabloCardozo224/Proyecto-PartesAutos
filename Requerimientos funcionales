@@ -57,7 +57,7 @@ Reporte de sin stock / bajo stock: Exportar un listado con las autopartes agotad
 Copias de seguridad: Permitir realizar respaldos (backups) manuales o automáticos de la base de datos.
 
 
-Requisitos no funcionales
+Requisitos no funcionales:
 
 
 Utilizar los métodos buscar para que el usuario busque lo que quiere en las listas y el método eliminar para cuando ya no se use más cierta pieza.
