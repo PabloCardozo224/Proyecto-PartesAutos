@@ -771,15 +771,15 @@ public class Pedido {
 
 Clase controladora
 
+
+package tallerautopartes;
+
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 
 public class Empresa {
     private String nombre;
-    private int modelo;
-    private int tamaño;
-    private int precio;
     private int stock;
     private int codigo;
     private ArrayList<Inventario>Lista_Inventario;
@@ -787,11 +787,8 @@ public class Empresa {
     private ArrayList<Persona>Lista_Persona;
     private ArrayList<Pedido>Lista_Pedido;
 
-    public Empresa(String nombre, int modelo, int tamaño, int precio, int stock, int codigo) {
+    public Empresa(String nombre, int stock, int codigo) {
         this.nombre = nombre;
-        this.modelo = modelo;
-        this.tamaño = tamaño;
-        this.precio = precio;
         this.stock = stock;
         this.codigo = codigo;
         this.Lista_Inventario = new ArrayList<>();
@@ -808,29 +805,8 @@ public class Empresa {
         this.nombre = nombre;
     }
 
-    public int getModelo() {
-        return modelo;
-    }
 
-    public void setModelo(int modelo) {
-        this.modelo = modelo;
-    }
-
-    public int getTamaño() {
-        return tamaño;
-    }
-
-    public void setTamaño(int tamaño) {
-        this.tamaño = tamaño;
-    }
-
-    public int getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(int precio) {
-        this.precio = precio;
-    }
+    
 
     public int getStock() {
         return stock;
@@ -949,4 +925,8 @@ public class Empresa {
         persona.setApellido(nuevoApellido);
         persona.setEdad(edad);
         
+
+    }    
+}
+
 
