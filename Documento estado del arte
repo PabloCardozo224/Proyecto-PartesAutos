@@ -1,0 +1,192 @@
+ESTADO DEL ARTE
+
+
+1) Introducción
+
+En la actualidad, las empresas dedicadas a la fabricación y comercialización de partes y repuestos para automóviles necesitan administrar una gran cantidad de información relacionada con productos, clientes, proveedores, compras, ventas y stock. Debido a la cantidad de operaciones que se realizan diariamente, llevar todos estos datos de forma manual puede generar errores y dificultar el control de la empresa.
+
+La incorporación de sistemas informáticos permite centralizar la información y facilitar la gestión de las diferentes áreas de una empresa. En el sector de autopartes, los sistemas actuales pueden integrar procesos como inventario, producción, compras, ventas, control de calidad y seguimiento de las piezas.
+
+Por este motivo, el presente estado del arte analiza las principales herramientas y tecnologías utilizadas actualmente en empresas relacionadas con la fabricación y comercialización de partes de automóviles, con el objetivo de establecer una base para el desarrollo de un sistema de gestión propio.
+
+
+
+2) Situación actual de las empresas de autopartes
+
+Una empresa de partes de autos puede manejar cientos o miles de productos diferentes. Entre ellos se pueden encontrar filtros, pastillas de freno, correas, bujías, componentes eléctricos, piezas de motor, elementos de suspensión y diferentes repuestos.
+
+Además de conocer qué productos posee la empresa, es necesario saber su cantidad disponible, ubicación, proveedor, precio, fecha de ingreso y, dependiendo del tipo de pieza, lote o número de serie.
+
+En empresas de mayor tamaño, estos procesos suelen estar integrados mediante sistemas ERP, que permiten conectar diferentes áreas de la organización. Estos sistemas pueden administrar inventarios, producción, compras, ventas, proveedores y costos desde una misma plataforma.
+
+
+
+3) Sistemas de gestión utilizados actualmente
+
+Uno de los principales recursos utilizados en este sector son los sistemas ERP (Enterprise Resource Planning). Estos sistemas permiten centralizar la información de la empresa y conectar diferentes procesos.
+
+En una empresa de autopartes, un ERP puede incluir:
+
+- Gestión de productos y repuestos.
+- Control de stock.
+- Gestión de proveedores.
+- Gestión de clientes.
+- Compras.
+- Ventas.
+- Control de producción.
+- Control de calidad.
+- Seguimiento de pedidos.
+- Gestión de depósitos.
+- Reportes y estadísticas.
+
+La principal ventaja de utilizar un sistema integrado es que la información puede actualizarse entre las diferentes áreas. Por ejemplo, cuando se realiza una venta, el sistema puede actualizar automáticamente la cantidad disponible del producto en el inventario.
+
+Los sistemas especializados para el sector automotriz también pueden incorporar seguimiento por lote o número de serie, control de versiones de piezas y herramientas para gestionar cambios en los productos.
+
+
+
+4) Gestión de inventario
+
+El control del inventario es uno de los aspectos más importantes para una empresa de partes de autos.
+
+Un sistema de inventario permite conocer qué productos están disponibles, cuáles están reservados, cuáles deben ser repuestos y dónde se encuentran almacenados.
+
+En los sistemas actuales se utilizan tecnologías como códigos de barras y, en algunos casos, RFID para identificar y realizar el seguimiento de los productos. Estas tecnologías permiten disminuir la cantidad de registros manuales y mejorar la visibilidad del inventario.
+
+Para el proyecto propuesto, el sistema podría registrar información como:
+
+- Código de la pieza.
+- Nombre.
+- Descripción.
+- Marca.
+- Modelo de automóvil compatible.
+- Precio.
+- Cantidad disponible.
+- Stock mínimo.
+- Ubicación.
+- Proveedor.
+- Categoría.
+
+Esto permitiría detectar rápidamente cuándo un producto necesita ser repuesto.
+
+
+
+5) Trazabilidad de las partes
+
+Otro aspecto importante en la industria automotriz es la trazabilidad. La trazabilidad permite conocer el recorrido de una pieza desde su ingreso a la empresa hasta su venta o entrega.
+
+Los sistemas especializados pueden realizar un seguimiento por lote, número de serie o producción, permitiendo relacionar una pieza con sus materiales, proveedor, producción y cliente. Esto resulta especialmente importante cuando se necesita investigar un problema de calidad.
+
+En el sistema propuesto, la trazabilidad podría utilizarse para registrar el ingreso de las piezas, su ubicación en el depósito y las ventas realizadas.
+
+
+6) Gestión de proveedores
+
+Las empresas de autopartes necesitan trabajar con diferentes proveedores para obtener materias primas, piezas y repuestos.
+
+Un sistema informático permite almacenar información de cada proveedor, como:
+
+- Nombre de la empresa.
+- CUIT.
+- Teléfono.
+- Correo electrónico.
+- Dirección.
+- Productos que suministra.
+- Historial de compras.
+
+También puede utilizarse para registrar pedidos realizados y controlar las entregas.
+
+Los sistemas ERP actuales pueden incluir herramientas para evaluar el desempeño de los proveedores considerando aspectos como entregas, calidad y costos.
+
+
+
+7) Gestión de ventas y clientes
+
+Otra función fundamental es la administración de las ventas.
+
+El sistema puede registrar cada venta indicando el cliente, los productos adquiridos, las cantidades, los precios y la fecha de la operación. Al mismo tiempo, el stock puede actualizarse automáticamente.
+
+La información de los clientes también puede almacenarse para facilitar futuras ventas y consultas.
+
+De esta manera, la empresa puede mantener un historial de operaciones y generar reportes sobre los productos más vendidos, las ventas realizadas y los clientes que compran con mayor frecuencia.
+
+
+
+8) Control de calidad
+
+La calidad es especialmente importante en el sector automotriz debido a que las partes utilizadas en un vehículo deben cumplir determinados requisitos.
+
+Los sistemas especializados pueden registrar controles realizados durante la producción y almacenar información sobre productos rechazados, defectos, reparaciones y controles finales. También pueden mantener registros que faciliten auditorías y seguimiento de problemas.
+
+Para el proyecto, se podría incorporar un módulo sencillo de control de calidad donde se registre si una pieza fue aprobada, rechazada o enviada a revisión.
+
+
+
+9) Tecnologías utilizadas
+
+Actualmente, las empresas de este sector pueden utilizar diferentes tecnologías para mejorar sus procesos.
+
+Entre las principales se encuentran:
+
+Bases de datos: permiten almacenar y organizar la información de clientes, proveedores, productos, ventas y compras.
+
+Sistemas ERP: integran diferentes áreas de la empresa en un único sistema.
+
+Códigos de barras: permiten identificar productos de manera rápida y reducir errores de carga.
+
+RFID: permite identificar y realizar seguimiento de determinados productos y activos mediante etiquetas electrónicas.
+
+Sistemas web: permiten acceder al sistema desde diferentes computadoras y dispositivos conectados a la red.
+
+Reportes y estadísticas: ayudan a los responsables de la empresa a tomar decisiones utilizando información actualizada.
+
+
+
+10) Comparación con el sistema propuesto
+
+A partir de la investigación realizada, se puede observar que los sistemas utilizados actualmente en empresas de autopartes suelen ser bastante completos y están orientados principalmente a empresas medianas y grandes.
+
+Área| Funciones
+Productos| Alta, baja, modificación y consulta
+Stock| Control de cantidades y ubicación
+Clientes| Registro y consulta
+Proveedores| Registro y consulta
+Compras| Registro de compras y actualización de stock
+Ventas| Registro de ventas y actualización de stock
+Reportes| Consultas sobre ventas, productos y stock
+Usuarios| Control de acceso al sistema
+
+De esta manera, el proyecto tomaría conceptos utilizados en sistemas profesionales, pero los adaptaría a una escala más sencilla y adecuada para una empresa de menor tamaño.
+
+
+
+11)Importancia del proyecto
+
+El desarrollo de un sistema de gestión para una empresa de partes de autos permitiría solucionar diferentes problemas relacionados con el manejo de información.
+
+Entre sus principales beneficios se encuentran:
+
+- Reducir errores en los registros.
+- Mejorar el control del stock.
+- Facilitar la búsqueda de productos.
+- Mantener organizada la información de clientes y proveedores.
+- Registrar las compras y ventas.
+- Obtener información rápidamente.
+- Generar reportes.
+- Facilitar la toma de decisiones.
+- Evitar la pérdida de información.
+- Centralizar los datos de la empresa.
+
+La tendencia actual de la industria apunta a una mayor integración entre inventario, producción, calidad, proveedores y logística, buscando disponer de información actualizada y trazable.
+
+
+
+12) Conclusión
+
+A partir del análisis realizado, se puede concluir que la utilización de sistemas informáticos resulta muy importante para la administración de una empresa dedicada a las partes de automóviles.
+
+Los sistemas utilizados actualmente muestran que las principales necesidades del sector están relacionadas con el control del inventario, la gestión de compras y ventas, la relación con proveedores, el control de calidad y la trazabilidad de los productos.
+
+El proyecto propuesto puede tomar estas características como referencia para desarrollar un sistema de gestión más sencillo, que permita centralizar la información de la empresa y facilitar las tareas diarias.
+
+De esta manera, el sistema no solamente serviría para almacenar datos, sino también para organizar los procesos de la empresa y obtener información que ayude a mejorar su funcionamiento.
