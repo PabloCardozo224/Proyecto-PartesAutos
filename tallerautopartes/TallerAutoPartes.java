@@ -71,6 +71,46 @@ public class TallerAutoPartes {
             emp.agregarVehiculo(camion);
         }
         break;
+              case 4:
+        int cantD = Integer.parseInt(JOptionPane.showInputDialog("Ingrese Cuantos Clientes quiere ingresar: "));
+        
+        for(int c=0;c<cantD;c++){
+            int id_cliente = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id del cliente"));
+            int cantidadpedidos=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de pedidos:"));
+            String nombreC = JOptionPane.showInputDialog("Ingrese el nombre del cliente");
+            String ApellidoC = JOptionPane.showInputDialog("Ingrese el apellido del cliente");
+            String mailC=JOptionPane.showInputDialog("Ingrese el email del Cliente: ");
+            String direccionC = JOptionPane.showInputDialog("Ingrese la direccion del cliente: ");
+            int telefonoC = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la direccion del cliente: "));
+            int edadC = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la edad del cliente: "));
+            int dniC = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el dni del cliente: "));
+            boolean FrecuenteC = Boolean.parseBoolean(JOptionPane.showInputDialog("El cliente es frecuente?: "));
+            
+            Cliente cliente = new Cliente(id_cliente, cantidadpedidos, nombreC, ApellidoC, mailC, direccionC, telefonoC, edadC, dniC, FrecuenteC);
+            emp.agregarPersona(cliente);
+        }
+        break;
+        case 5:
+        int cantE = Integer.parseInt(JOptionPane.showInputDialog("Ingrese Cuantos Empleados quiere ingresar: "));
+        
+        for(int c=0;c<cantE;c++){
+            int sueldo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el sueldo del empleado: "));
+            int legajo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el legajo del empleado: "));
+            String horario = JOptionPane.showInputDialog("Ingrese el horario del empleado: ");
+            int antiguedad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la antiguedad del empleado: "));
+            String nombreE = JOptionPane.showInputDialog("Ingrese el nombre del empleado: ");
+            String ApellidoE = JOptionPane.showInputDialog("Ingrese el apellido del empleado: ");
+            String mailE=JOptionPane.showInputDialog("Ingrese el email del empleado: ");
+            String direccionE = JOptionPane.showInputDialog("Ingrese la direccion del empleado: ");
+            int telefonoE = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la direccion del empleado: "));
+            int edadE = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la edad del empleado: "));
+            int dniE = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el dni del empleado: "));
+            boolean FrecuenteE = Boolean.parseBoolean(JOptionPane.showInputDialog("El empleado es frecuente?: "));
+            
+            Empleado empleado = new Empleado(sueldo, legajo, horario, antiguedad, nombreE, ApellidoE, mailE, direccionE, telefonoE, edadE, dniE, FrecuenteE);
+            emp.agregarPersona(empleado);
+        }
+        break;
     }
     }
 }
