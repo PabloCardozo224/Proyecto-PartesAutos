@@ -423,7 +423,7 @@ public class Cliente extends Persona{
     }
 
     public Cliente(int id_cliente, int cantidadPedidos, String nombre, String apellido, String mail, String direccion, int telefono, int edad, boolean frecuente) {
-        super(nombre, apellido, mail, direccion, telefono, edad, frecuente);
+        super(nombre, apellido, mail, direccion, telefono, edad, dni, frecuente);
         this.id_cliente = id_cliente;
         this.cantidadPedidos = cantidadPedidos;
     }
