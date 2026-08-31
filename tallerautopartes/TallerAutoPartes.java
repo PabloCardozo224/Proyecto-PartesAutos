@@ -111,6 +111,33 @@ public class TallerAutoPartes {
             emp.agregarPersona(empleado);
         }
         break;
+              case 6:
+        int cantF = Integer.parseInt(JOptionPane.showInputDialog("Ingrese Cuantos Chasis quiere ingresar: "));
+        
+        for(int c=0;c<cantF;c++){
+            int año = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el año del chasis: "));
+            String parte = JOptionPane.showInputDialog("Ingrese la parte del chasis: ");
+            String color = JOptionPane.showInputDialog("Ingrese el color del chasis: ");
+            int codigoparteC = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el codigo de la parte del chasis: "));
+            String ubicacionparteC = JOptionPane.showInputDialog("Ingrese la ubicacion de la parte del chasis: ");
+            
+            Chasis chasis = new Chasis(año, parte, color, codigoparteC, ubicacionparteC);
+            emp.agregarInventario(chasis);
+        }
+        break;
+        case 7:
+        int cantG = Integer.parseInt(JOptionPane.showInputDialog("Ingrese Cuanta Mecanica quiere que tenga el auto: "));
+        
+        for(int c=0;c<cantG;c++){
+            int año = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el año de la parte mecanica: "));
+            String funcion = JOptionPane.showInputDialog("Ingrese la funcion de la parte mecanica: ");
+            int codigoparteC = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el codigo de la parte de la parte mecanica: "));
+            String ubicacionparteC = JOptionPane.showInputDialog("Ingrese la ubicacion de la parte de la parte mecanica: ");
+            
+            Mecanica mecanica = new Mecanica(año, funcion, codigoparteC, ubicacionparteC);
+            emp.agregarInventario(mecanica);
+        }
+        break;
     }
     }
 }
