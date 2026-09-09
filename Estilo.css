@@ -16,13 +16,61 @@ a{
 
 /* Barra principal*/
 
-.nadvar-principal {
+.navbar-principal {
     width: 100%;
     height: 90%;
     background: #111116;
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     align-items: center;
     padding: 10px 35px;
-    gap: 25px;
+    gap: 10px;
 }
 
+.navbar-principal > div,
+.navbar-principal > form {
+    flex-shrink: 0;
+}
+
+/* BANNER */
+.banner{
+     width: 100%;
+    height: 390px;
+    background: #111116;
+    display: flex;
+    align-items: center;
+    padding: 40px 80px;
+}
+
+/* Banner Calidad y confianza*/
+.banner h1 {
+    color: white;
+    font-size: 42px;
+    font-weight: bold;
+    margin-bottom: 20px; 
+}
+
+
+/* Color letra*/
+.banner h1 span{
+    color: red;
+} 
+
+
+/* de bajo de calidad y confianza*/
+.banner p {
+    color: white;
+    font-size: 18px;
+    font-weight: 500px;
+    line-height: 1.5; 
+}
+
+
+/* banner botones*/
+
+.banner-botones{
+    display: flex;
+    gap: 20px;
+    margin-top: 25px;
+}
