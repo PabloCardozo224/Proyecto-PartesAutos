@@ -5,11 +5,19 @@
 </head>
 
     <body>
+    <nav class=".header"
+    style="background-color: #ffffff;">
+    <div class=""style ="text-align:center">
+        
         <h3>Panel de Administracion</h3>
 
         <nav id="inicio">
+        </div>
+    </nav>
     <h2>Índice</h2>
-
+    <nav class=".indice"
+    style="background-color: #000000;">
+    <div class=""style ="text-align:left">
     <ul>
         <li><a href="Productos">Productos</a></li>
         <li><a href="Categorias">Categorias</a></li>
@@ -19,7 +27,8 @@
         <li><a href="Configuracion">Configuracion</a></li>
         <li><a href="Informe mensual">Informe mensual</a></li>
     </ul>
-
+    </div>
+    </nav>
     <h3>Gestion de Productos</h3>
 
 
