@@ -29,6 +29,13 @@
     </ul>
     </div>
     </nav>
+    <nav class=".btn_rojo">
+    <div class=""style= "text-align:right">
+    <button class="Añadir-pruductos "style="background-color: ">
+        +Añadir Productos
+    </button>
+</div>
+</nav>
     <h3>Gestion de Productos</h3>
 
 
