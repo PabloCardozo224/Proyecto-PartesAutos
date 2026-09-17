@@ -133,7 +133,7 @@ body{
 .categoria {
     height: 180px;
     border: 1px solid lightgray;
-    border-radius: 8px;
+    border-radius: 25px;
     text-align: center;
     padding: 15px;
 }
