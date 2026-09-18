@@ -152,3 +152,10 @@ a {
 .beneficios p{
     font-size: 14px;
 }
+
+/* Pagina de usuario */
+
+.body{
+    background-color: black;
+    color: white;
+}
