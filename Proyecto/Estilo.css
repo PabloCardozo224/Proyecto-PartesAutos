@@ -142,3 +142,9 @@ body{
     font-size: 15px;
     font-weight: bold;
 }
+
+.hola{
+    border-left-color: #000000;
+    text-align: left;
+    background-position: left;
+}
