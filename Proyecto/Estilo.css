@@ -148,3 +148,9 @@ body{
     text-align: left;
     background-position: left;
 }
+/*Indice*/
+.Indice{
+    background-position: left;
+    background: #000000;
+    color:#fff
+}
