@@ -1,0 +1,605 @@
+﻿delimiter //
+
+
+create procedure sp_clientes_insertar(
+    in p_nombre varchar(35),
+    in p_apellido varchar(35),
+    in p_dni int,
+    in p_telefono int,
+    in p_direccion varchar(25)
+)
+begin
+    insert into clientes (nombre, apellido, dni, telefono, direccion)
+    values (p_nombre, p_apellido, p_dni, p_telefono, p_direccion);
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_clientes_actualizar_contacto(
+    in p_id_cliente int,
+    in p_telefono int,
+    in p_direccion varchar(25)
+)
+begin
+    update clientes 
+    set telefono = p_telefono, direccion = p_direccion
+    where id_cliente = p_id_cliente;
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_clientes_buscar_por_dni(
+    in p_dni int
+)
+begin
+    select * from clientes where dni = p_dni;
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_clientes_total_gastado(
+    in p_id_cliente int,
+    out p_total_gastado float
+)
+begin
+    select coalesce(sum(p.monto), 0) into p_total_gastado
+    from envios e
+    inner join ventas v on e.id_envio = v.id_envio
+    inner join pagos p on v.id_pago = p.id_pago
+    where e.id_cliente = p_id_cliente and p.estado = 'confirmado';
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_clientes_eliminar(
+    in p_id_cliente int,
+    out p_mensaje varchar(100)
+)
+begin
+    declare v_cantidad int;
+    select count(*) into v_cantidad from envios where id_cliente = p_id_cliente;
+    
+    if v_cantidad = 0 then
+        delete from clientes where id_cliente = p_id_cliente;
+        set p_mensaje = 'cliente eliminado exitosamente.';
+    else
+        set p_mensaje = 'no se puede eliminar: el cliente tiene registros asociados.';
+    end if;
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_empleados_insertar(
+    in p_nombre varchar(35),
+    in p_apellido varchar(35),
+    in p_dni int,
+    in p_telefono int,
+    in p_puesto varchar(30),
+    in p_rol varchar(35)
+)
+begin
+    insert into empleados (nombre, apellido, dni, telefono, puesto, rol)
+    values (p_nombre, p_apellido, p_dni, p_telefono, p_puesto, p_rol);
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_empleados_actualizar_cargo(
+    in p_id_empleado int,
+    in p_puesto varchar(30),
+    in p_rol varchar(35)
+)
+begin
+    update empleados 
+    set puesto = p_puesto, rol = p_rol
+    where id_empleado = p_id_empleado;
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_empleados_listar_por_puesto(
+    in p_puesto varchar(30)
+)
+begin
+    select * from empleados where puesto = p_puesto;
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_empleados_total_ventas(
+    in p_id_empleado int,
+    out p_total_ventas int
+)
+begin
+    select count(*) into p_total_ventas
+    from ventas
+    where id_empleado = p_id_empleado;
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_empleados_eliminar(
+    in p_id_empleado int
+)
+begin
+    delete from empleados where id_empleado = p_id_empleado;
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_provincias_insertar(
+    in p_nombre varchar(25),
+    in p_localidad varchar(45)
+)
+begin
+    insert into provincias (nombre, localidad)
+    values (p_nombre, p_localidad);
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_provincias_listar_localidades(
+    in p_nombre varchar(25)
+)
+begin
+    select id_provincia, localidad 
+    from provincias 
+    where nombre = p_nombre;
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_provincias_total_envios(
+    in p_id_provincia int,
+    out p_cantidad_envios int
+)
+begin
+    select count(*) into p_cantidad_envios
+    from envios
+    where id_provincia = p_id_provincia;
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_provincias_actualizar_localidad(
+    in p_id_provincia int,
+    in p_nueva_localidad varchar(45)
+)
+begin
+    update provincias 
+    set localidad = p_nueva_localidad
+    where id_provincia = p_id_provincia;
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_provincias_eliminar(
+    in p_id_provincia int
+)
+begin
+    delete from provincias where id_provincia = p_id_provincia;
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_productos_insertar(
+    in p_nombre varchar(35),
+    in p_descripcion varchar(50),
+    in p_tipo_parte varchar(100),
+    in p_tamaño enum("chico", "mediano", "grande"),
+    in p_cantidad int,
+    in p_precio int,
+    in p_color varchar(25),
+    in p_modelo varchar(40)
+)
+begin
+    insert into productos (nombre, descripcion, tipo_parte, tamaño, cantidad, precio, color, modelo)
+    values (p_nombre, p_descripcion, p_tipo_parte, p_tamaño, p_cantidad, p_precio, p_color, p_modelo);
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_productos_actualizar_stock(
+    in p_id_producto int,
+    in p_cantidad_cambio int,
+    out p_stock_final int
+)
+begin
+    update productos 
+    set cantidad = cantidad + p_cantidad_cambio
+    where id_producto = p_id_producto;
+    
+    select cantidad into p_stock_final
+    from productos
+    where id_producto = p_id_producto;
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_productos_aumentar_precio_por_tipo(
+    in p_tipo_parte varchar(100),
+    in p_porcentaje float
+)
+begin
+    update productos
+    set precio = round(precio * (1 + (p_porcentaje / 100)))
+    where tipo_parte = p_tipo_parte;
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_productos_buscar_por_precio(
+    in p_precio_min int,
+    in p_precio_max int
+)
+begin
+    select * from productos 
+    where precio between p_precio_min and p_precio_max;
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_productos_bajo_stock(
+    in p_stock_limite int
+)
+begin
+    select id_producto, nombre, descripcion, cantidad, precio 
+    from productos 
+    where cantidad <= p_stock_limite;
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_pagos_insertar(
+    in p_id_pedido int,
+    in p_metodo enum("efectivo", "transferencia", "tarjeta de debito"),
+    in p_monto float,
+    in p_estado enum("pendiente", "confirmado", "denegado")
+)
+begin
+    insert into pagos (id_pedido, metodo, monto, estado)
+    values (p_id_pedido, p_metodo, p_monto, p_estado);
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_pagos_actualizar_estado(
+    in p_id_pago int,
+    in p_nuevo_estado enum("pendiente", "confirmado", "denegado")
+)
+begin
+    update pagos 
+    set estado = p_nuevo_estado
+    where id_pago = p_id_pago;
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_pagos_total_por_metodo(
+    in p_metodo enum("efectivo", "transferencia", "tarjeta de debito"),
+    out p_total_monto float
+)
+begin
+    select coalesce(sum(monto), 0) into p_total_monto
+    from pagos
+    where metodo = p_metodo and estado = 'confirmado';
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_pagos_listar_por_estado(
+    in p_estado enum("pendiente", "confirmado", "denegado")
+)
+begin
+    select * from pagos where estado = p_estado;
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_pagos_buscar_por_pedido(
+    in p_id_pedido int
+)
+begin
+    select * from pagos where id_pedido = p_id_pedido;
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_envios_insertar(
+    in p_id_pedido int,
+    in p_id_producto int,
+    in p_id_cliente int,
+    in p_id_provincia int,
+    in p_n_casa int,
+    in p_nombre_calle varchar(45),
+    in p_nombre_barrio varchar(45),
+    in p_f_inicio datetime
+)
+begin
+    insert into envios (id_pedido, id_producto, id_cliente, id_provincia, n_casa, nombre_calle, nombre_barrio, f_inicio, estado_env)
+    values (p_id_pedido, p_id_producto, p_id_cliente, p_id_provincia, p_n_casa, p_nombre_calle, p_nombre_barrio, p_f_inicio, 'en almacen');
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_envios_actualizar_estado(
+    in p_id_envio int,
+    in p_nuevo_estado enum("en camino", "entregado", "en almacen", "reenviando"),
+    in p_f_final datetime
+)
+begin
+    update envios 
+    set estado_env = p_nuevo_estado, f_final = p_f_final
+    where id_envio = p_id_envio;
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_envios_pendientes()
+begin
+    select * from envios 
+    where estado_env in ('en camino', 'en almacen', 'reenviando');
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_envios_por_cliente(
+    in p_id_cliente int
+)
+begin
+    select e.*, p.nombre as provincia
+    from envios e
+    inner join provincias p on e.id_provincia = p.id_provincia
+    where e.id_cliente = p_id_cliente;
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_envios_eliminar(
+    in p_id_envio int
+)
+begin
+    delete from envios where id_envio = p_id_envio;
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_ventas_insertar(
+    in p_f_venta datetime,
+    in p_cant_prod int,
+    in p_tipo_pedido varchar(30),
+    in p_id_producto int,
+    in p_id_empleado int,
+    in p_id_envio int,
+    in p_id_pago int
+)
+begin
+    insert into ventas (f_venta, cant_prod, tipo_pedido, id_producto, id_empleado, id_envio, id_pago)
+    values (p_f_venta, p_cant_prod, p_tipo_pedido, p_id_producto, p_id_empleado, p_id_envio, p_id_pago);
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_ventas_por_rango_fechas(
+    in p_fecha_desde datetime,
+    in p_fecha_hasta datetime
+)
+begin
+    select v.id_venta, v.f_venta, p.nombre as producto, v.cant_prod, e.nombre as empleado
+    from ventas v
+    inner join productos p on v.id_producto = p.id_producto
+    inner join empleados e on v.id_empleado = e.id_empleado
+    where v.f_venta between p_fecha_desde and p_fecha_hasta;
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_ventas_total_por_tipo(
+    in p_tipo_pedido varchar(30),
+    out p_monto_total float
+)
+begin
+    select coalesce(sum(pg.monto), 0) into p_monto_total
+    from ventas v
+    inner join pagos pg on v.id_pago = pg.id_pago
+    where v.tipo_pedido = p_tipo_pedido and pg.estado = 'confirmado';
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_ventas_producto_mas_vendido(
+    out p_id_producto int,
+    out p_nombre_producto varchar(35),
+    out p_total_unidades int
+)
+begin
+    select v.id_producto, p.nombre, sum(v.cant_prod) as total
+    into p_id_producto, p_nombre_producto, p_total_unidades
+    from ventas v
+    inner join productos p on v.id_producto = p.id_producto
+    group by v.id_producto, p.nombre
+    order by total desc
+    limit 1;
+end //
+
+
+delimiter ;
+
+
+delimiter //
+
+
+create procedure sp_ventas_eliminar(
+    in p_id_venta int
+)
+begin
+    delete from ventas where id_venta = p_id_venta;
+end //
+
+
+delimiter ;
