@@ -154,3 +154,79 @@ body{
     background: #000000;
     color:#fff
 }
+
+
+body {
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f3f4f6;
+    min-height: 100vh;
+    display: flex;
+  }
+
+  /* ===== Barra lateral ===== */
+  .sidebar {
+    width: 240px;
+    min-height: 100vh;
+    background: #1c1d21;
+    color: #e6e6e6;
+    padding: 24px 12px;
+    flex-shrink: 0;
+  }
+
+  .sidebar__brand {
+    padding: 0 8px 4px;
+    text-align: center;
+  }
+  .sidebar__brand h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+  }
+  .sidebar__brand p {
+    font-size: 9px;
+    letter-spacing: .6px;
+    color: #b5b5b5;
+    margin-top: 6px;
+    text-transform: uppercase;
+  }
+
+  .menu {
+    list-style: none;
+    margin-top: 44px;
+  }
+  .menu li + li { margin-top: 4px; }
+
+  .menu a {
+    display: block;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: #e6e6e6;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background .15s, color .15s;
+  }
+  .menu a:hover { background: #2a2b31; }
+  .menu a:focus-visible { outline: 2px solid #e5352b; outline-offset: 2px; }
+
+  /* Ítem activo (rojo) */
+  .menu a.active {
+    background: #e5352b;
+    color: #fff;
+    font-weight: 700;
+  }
+  .menu a.active:hover { background: #e5352b; }
+
+  /* Ítem destacado en negrita (Informe mensual) */
+  .menu a.strong { font-weight: 700; color: #fff; }
+
+  /* ===== Contenido de ejemplo ===== */
+  .content { flex: 1; padding: 32px; }
+
+  /* Móvil */
+  @media (max-width: 640px) {
+    body { flex-direction: column; }
+    .sidebar { width: 100%; min-height: auto; }
+    .menu { margin-top: 24px; }
+  }
