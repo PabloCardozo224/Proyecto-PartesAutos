@@ -31,6 +31,11 @@ body{
 }
 
 
+
+/*panel  de admin*/
+.panel{
+    align-items: left;
+}
 /* Menu Secundario*/
 
 .menu-secundario{
@@ -163,6 +168,12 @@ body {
     display: flex;
   }
 
+  .tablas{
+    border: 1px solid #885df1;
+  }
+.tabla1{
+    border:darkgray 2cm solid;
+}
   /* ===== Barra lateral ===== */
   .sidebar {
     width: 240px;
@@ -225,8 +236,8 @@ body {
   .content { flex: 1; padding: 32px; }
 
   /* Móvil */
-  @media (max-width: 640px) {
+  @media (max-width: 300px) {
     body { flex-direction: column; }
     .sidebar { width: 100%; min-height: auto; }
-    .menu { margin-top: 24px; }
+    .menu { margin-top: 10  px; }
   }
