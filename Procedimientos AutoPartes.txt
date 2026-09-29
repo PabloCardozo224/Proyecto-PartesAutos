@@ -1,153 +1,1097 @@
+-- ============================================================
+-- ==================== MARCAS =================================
+-- ============================================================
+
+DELIMITER //
+CREATE PROCEDURE sp_Marcas_Insertar(IN p_nombre VARCHAR(50))
+BEGIN
+    INSERT INTO Marcas(nombre) VALUES(p_nombre);
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Marcas_Actualizar(IN p_id INT, IN p_nombre VARCHAR(50))
+BEGIN
+    UPDATE Marcas SET nombre = p_nombre WHERE id_marca = p_id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Marcas_Eliminar(IN p_id INT)
+BEGIN
+    DELETE FROM Marcas WHERE id_marca = p_id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Marcas_ObtenerPorId(IN p_id INT)
+BEGIN
+    SELECT * FROM Marcas WHERE id_marca = p_id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Marcas_Listar()
+BEGIN
+    SELECT * FROM Marcas;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Marcas_Contar()
+BEGIN
+    SELECT COUNT(*) AS total FROM Marcas;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Marcas_BuscarPorNombre(IN p_nombre VARCHAR(50))
+BEGIN
+    SELECT * FROM Marcas WHERE nombre LIKE CONCAT('%', p_nombre, '%');
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Marcas_ObtenerPorNombreExacto(IN p_nombre VARCHAR(50))
+BEGIN
+    SELECT * FROM Marcas WHERE nombre = p_nombre;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Marcas_ListarOrdenadoPorNombre()
+BEGIN
+    SELECT * FROM Marcas ORDER BY nombre ASC;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Marcas_ListarOrdenadoDescendente()
+BEGIN
+    SELECT * FROM Marcas ORDER BY nombre DESC;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Marcas_ObtenerPrimera()
+BEGIN
+    SELECT * FROM Marcas ORDER BY id_marca ASC LIMIT 1;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Marcas_ObtenerUltima()
+BEGIN
+    SELECT * FROM Marcas ORDER BY id_marca DESC LIMIT 1;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Marcas_Existe(IN p_id INT)
+BEGIN
+    SELECT COUNT(*) AS existe FROM Marcas WHERE id_marca = p_id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Marcas_ContarPorNombre(IN p_nombre VARCHAR(50))
+BEGIN
+    SELECT COUNT(*) AS total FROM Marcas WHERE nombre LIKE CONCAT('%', p_nombre, '%');
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Marcas_EliminarPorNombre(IN p_nombre VARCHAR(50))
+BEGIN
+    DELETE FROM Marcas WHERE nombre = p_nombre;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Marcas_ListarConProductos()
+BEGIN
+    SELECT m.id_marca, m.nombre, COUNT(p.Id_Producto) AS total_productos
+    FROM Marcas m
+    LEFT JOIN Productos p ON m.id_marca = p.id_marca
+    GROUP BY m.id_marca, m.nombre;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Marcas_ListarSinProductos()
+BEGIN
+    SELECT m.*
+    FROM Marcas m
+    LEFT JOIN Productos p ON m.id_marca = p.id_marca
+    WHERE p.Id_Producto IS NULL;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Marcas_ListarLimite(IN p_limite INT)
+BEGIN
+    SELECT * FROM Marcas LIMIT p_limite;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Marcas_InsertarSiNoExiste(IN p_nombre VARCHAR(50))
+BEGIN
+    INSERT INTO Marcas(nombre)
+    SELECT p_nombre FROM DUAL
+    WHERE NOT EXISTS (SELECT 1 FROM Marcas WHERE nombre = p_nombre);
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Marcas_ListarTopPorVentas()
+BEGIN
+    SELECT m.id_marca, m.nombre,
+           COALESCE(SUM(v.cantidad_productos), 0) AS unidades_vendidas,
+           COALESCE(SUM(v.cantidad_productos * p.precio), 0) AS facturado
+    FROM Marcas m
+    LEFT JOIN Productos p ON m.id_marca = p.id_marca
+    LEFT JOIN Ventas v    ON v.Id_Producto = p.Id_Producto
+    GROUP BY m.id_marca, m.nombre
+    ORDER BY unidades_vendidas DESC;
+END //
+DELIMITER ;
 
 
-create procedure sp_clientes_insertar(
-    in p_nombre varchar(35),
-    in p_apellido varchar(35),
-    in p_dni int,
-    in p_telefono int,
-    in p_direccion varchar(25)
-)
-begin
-    insert into clientes (nombre, apellido, dni, telefono, direccion)
-    values (p_nombre, p_apellido, p_dni, p_telefono, p_direccion);
-end //
+-- ============================================================
+-- ==================== EMPLEADOS ==============================
+-- ============================================================
 
-delimiter ;
+DELIMITER //
+CREATE PROCEDURE sp_Empleados_Insertar(IN p_Nombre VARCHAR(35), IN p_Apellido VARCHAR(35), IN p_DNI INT, IN p_Telefono VARCHAR(15), IN p_Puesto VARCHAR(30), IN p_Rol VARCHAR(35))
+BEGIN
+    INSERT INTO Empleados(Nombre, Apellido, DNI, Telefono, Puesto, Rol)
+    VALUES(p_Nombre, p_Apellido, p_DNI, p_Telefono, p_Puesto, p_Rol);
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Empleados_Actualizar(IN p_id INT, IN p_Nombre VARCHAR(35), IN p_Apellido VARCHAR(35), IN p_DNI INT, IN p_Telefono VARCHAR(15), IN p_Puesto VARCHAR(30), IN p_Rol VARCHAR(35))
+BEGIN
+    UPDATE Empleados
+    SET Nombre = p_Nombre, Apellido = p_Apellido, DNI = p_DNI,
+        Telefono = p_Telefono, Puesto = p_Puesto, Rol = p_Rol
+    WHERE Id_Empleado = p_id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Empleados_Eliminar(IN p_id INT)
+BEGIN
+    DELETE FROM Empleados WHERE Id_Empleado = p_id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Empleados_ObtenerPorId(IN p_id INT)
+BEGIN
+    SELECT * FROM Empleados WHERE Id_Empleado = p_id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Empleados_Listar()
+BEGIN
+    SELECT * FROM Empleados;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Empleados_Contar()
+BEGIN
+    SELECT COUNT(*) AS total FROM Empleados;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Empleados_BuscarPorNombre(IN p_Nombre VARCHAR(35))
+BEGIN
+    SELECT * FROM Empleados WHERE Nombre LIKE CONCAT('%', p_Nombre, '%');
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Empleados_BuscarPorApellido(IN p_Apellido VARCHAR(35))
+BEGIN
+    SELECT * FROM Empleados WHERE Apellido LIKE CONCAT('%', p_Apellido, '%');
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Empleados_BuscarPorDNI(IN p_DNI INT)
+BEGIN
+    SELECT * FROM Empleados WHERE DNI = p_DNI;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Empleados_BuscarPorPuesto(IN p_Puesto VARCHAR(30))
+BEGIN
+    SELECT * FROM Empleados WHERE Puesto = p_Puesto;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Empleados_BuscarPorRol(IN p_Rol VARCHAR(35))
+BEGIN
+    SELECT * FROM Empleados WHERE Rol = p_Rol;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Empleados_ContarPorPuesto(IN p_Puesto VARCHAR(30))
+BEGIN
+    SELECT COUNT(*) AS total FROM Empleados WHERE Puesto = p_Puesto;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Empleados_ContarPorRol(IN p_Rol VARCHAR(35))
+BEGIN
+    SELECT COUNT(*) AS total FROM Empleados WHERE Rol = p_Rol;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Empleados_Existe(IN p_id INT)
+BEGIN
+    SELECT COUNT(*) AS existe FROM Empleados WHERE Id_Empleado = p_id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Empleados_ListarOrdenadoPorApellido()
+BEGIN
+    SELECT * FROM Empleados ORDER BY Apellido;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Empleados_ListarLimite(IN p_limite INT)
+BEGIN
+    SELECT * FROM Empleados LIMIT p_limite;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Empleados_ActualizarTelefono(IN p_id INT, IN p_Telefono VARCHAR(15))
+BEGIN
+    UPDATE Empleados SET Telefono = p_Telefono WHERE Id_Empleado = p_id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Empleados_ListarPorPuestoYRol(IN p_Puesto VARCHAR(30), IN p_Rol VARCHAR(35))
+BEGIN
+    SELECT * FROM Empleados WHERE Puesto = p_Puesto AND Rol = p_Rol;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Empleados_TopVentas(IN p_limite INT)
+BEGIN
+    SELECT e.Id_Empleado, e.Nombre, e.Apellido, e.Puesto,
+           COUNT(v.id_Ventas) AS total_ventas,
+           COALESCE(SUM(v.cantidad_productos), 0) AS unidades_vendidas
+    FROM Empleados e
+    LEFT JOIN Ventas v ON e.Id_Empleado = v.id_Empleado
+    GROUP BY e.Id_Empleado, e.Nombre, e.Apellido, e.Puesto
+    ORDER BY total_ventas DESC
+    LIMIT p_limite;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Empleados_VentasPorEmpleado(IN p_id INT)
+BEGIN
+    SELECT v.id_Ventas, v.Fecha_venta, v.Tipo_pedido,
+           v.cantidad_productos, p.Nombre AS producto, p.precio
+    FROM Ventas v
+    INNER JOIN Productos p ON v.Id_Producto = p.Id_Producto
+    WHERE v.id_Empleado = p_id
+    ORDER BY v.Fecha_venta DESC;
+END //
+DELIMITER ;
 
 
-delimiter //
+-- ============================================================
+-- ==================== PRODUCTOS ==============================
+-- ============================================================
 
-create procedure sp_clientes_actualizar_contacto(
-    in p_id_cliente int,
-    in p_telefono int,
-    in p_direccion varchar(25)
-)
-begin
-    update clientes 
-    set telefono = p_telefono, direccion = p_direccion 
-    where id_cliente = p_id_cliente;
-end //
+DELIMITER //
+CREATE PROCEDURE sp_Productos_Insertar(IN p_Nombre VARCHAR(35), IN p_Descripcion VARCHAR(50), IN p_Tipo_Parte VARCHAR(100), IN p_Tamano VARCHAR(10), IN p_Cantidad INT, IN p_precio INT, IN p_color VARCHAR(25), IN p_Modelo VARCHAR(40), IN p_id_marca INT, IN p_Tipo_Vehiculo VARCHAR(10))
+BEGIN
+    INSERT INTO Productos(Nombre, Descripcion, Tipo_Parte, `Tamaño`, Cantidad, precio, color, Modelo, id_marca, Tipo_Vehiculo)
+    VALUES(p_Nombre, p_Descripcion, p_Tipo_Parte, p_Tamano, p_Cantidad, p_precio, p_color, p_Modelo, p_id_marca, p_Tipo_Vehiculo);
+END //
+DELIMITER ;
 
-delimiter ;
+DELIMITER //
+CREATE PROCEDURE sp_Productos_Actualizar(IN p_id INT, IN p_Nombre VARCHAR(35), IN p_Descripcion VARCHAR(50), IN p_Tipo_Parte VARCHAR(100), IN p_Tamano VARCHAR(10), IN p_Cantidad INT, IN p_precio INT, IN p_color VARCHAR(25), IN p_Modelo VARCHAR(40), IN p_id_marca INT, IN p_Tipo_Vehiculo VARCHAR(10))
+BEGIN
+    UPDATE Productos
+    SET Nombre = p_Nombre, Descripcion = p_Descripcion, Tipo_Parte = p_Tipo_Parte,
+        `Tamaño` = p_Tamano, Cantidad = p_Cantidad, precio = p_precio,
+        color = p_color, Modelo = p_Modelo, id_marca = p_id_marca,
+        Tipo_Vehiculo = p_Tipo_Vehiculo
+    WHERE Id_Producto = p_id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Productos_Eliminar(IN p_id INT)
+BEGIN
+    DELETE FROM Productos WHERE Id_Producto = p_id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Productos_ObtenerPorId(IN p_id INT)
+BEGIN
+    SELECT * FROM Productos WHERE Id_Producto = p_id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Productos_Listar()
+BEGIN
+    SELECT * FROM Productos;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Productos_Contar()
+BEGIN
+    SELECT COUNT(*) AS total FROM Productos;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Productos_BuscarPorNombre(IN p_Nombre VARCHAR(35))
+BEGIN
+    SELECT * FROM Productos WHERE Nombre LIKE CONCAT('%', p_Nombre, '%');
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Productos_BuscarPorTipoParte(IN p_Tipo_Parte VARCHAR(100))
+BEGIN
+    SELECT * FROM Productos WHERE Tipo_Parte = p_Tipo_Parte;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Productos_BuscarPorMarca(IN p_id_marca INT)
+BEGIN
+    SELECT * FROM Productos WHERE id_marca = p_id_marca;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Productos_BuscarPorTipoVehiculo(IN p_Tipo_Vehiculo VARCHAR(10))
+BEGIN
+    SELECT * FROM Productos WHERE Tipo_Vehiculo = p_Tipo_Vehiculo;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Productos_FiltrarPorPrecioMayor(IN p_precio INT)
+BEGIN
+    SELECT * FROM Productos WHERE precio > p_precio;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Productos_FiltrarPorPrecioMenor(IN p_precio INT)
+BEGIN
+    SELECT * FROM Productos WHERE precio < p_precio;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Productos_ListarPorTamano(IN p_Tamano VARCHAR(10))
+BEGIN
+    SELECT * FROM Productos WHERE `Tamaño` = p_Tamano;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Productos_ListarPorColor(IN p_color VARCHAR(25))
+BEGIN
+    SELECT * FROM Productos WHERE color = p_color;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Productos_ListarPorModelo(IN p_Modelo VARCHAR(40))
+BEGIN
+    SELECT * FROM Productos WHERE Modelo LIKE CONCAT('%', p_Modelo, '%');
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Productos_ContarPorTipoParte(IN p_Tipo_Parte VARCHAR(100))
+BEGIN
+    SELECT COUNT(*) AS total FROM Productos WHERE Tipo_Parte = p_Tipo_Parte;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Productos_ContarPorMarca(IN p_id_marca INT)
+BEGIN
+    SELECT COUNT(*) AS total FROM Productos WHERE id_marca = p_id_marca;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Productos_ActualizarPrecio(IN p_id INT, IN p_precio INT)
+BEGIN
+    UPDATE Productos SET precio = p_precio WHERE Id_Producto = p_id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Productos_ListarConMarca()
+BEGIN
+    SELECT p.*, m.nombre AS marca
+    FROM Productos p
+    INNER JOIN Marcas m ON p.id_marca = m.id_marca
+    ORDER BY m.nombre, p.Nombre;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Productos_StockBajo(IN p_umbral INT)
+BEGIN
+    SELECT * FROM Productos WHERE Cantidad < p_umbral ORDER BY Cantidad ASC;
+END //
+DELIMITER ;
 
 
-delimiter //
+-- ============================================================
+-- ==================== PAGOS ==================================
+-- ============================================================
 
-create procedure sp_clientes_buscar_por_dni(
-    in p_dni int
-)
-begin
-    select * from clientes where dni = p_dni;
-end //
+DELIMITER //
+CREATE PROCEDURE sp_Pagos_Insertar(IN p_Metodo VARCHAR(20), IN p_Monto FLOAT, IN p_Estado VARCHAR(20))
+BEGIN
+    INSERT INTO Pagos(Metodo, Monto, Estado) VALUES(p_Metodo, p_Monto, p_Estado);
+END //
+DELIMITER ;
 
-delimiter ;
+DELIMITER //
+CREATE PROCEDURE sp_Pagos_Actualizar(IN p_id INT, IN p_Metodo VARCHAR(20), IN p_Monto FLOAT, IN p_Estado VARCHAR(20))
+BEGIN
+    UPDATE Pagos SET Metodo = p_Metodo, Monto = p_Monto, Estado = p_Estado
+    WHERE Id_Pago = p_id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Pagos_Eliminar(IN p_id INT)
+BEGIN
+    DELETE FROM Pagos WHERE Id_Pago = p_id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Pagos_ObtenerPorId(IN p_id INT)
+BEGIN
+    SELECT * FROM Pagos WHERE Id_Pago = p_id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Pagos_Listar()
+BEGIN
+    SELECT * FROM Pagos;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Pagos_Contar()
+BEGIN
+    SELECT COUNT(*) AS total FROM Pagos;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Pagos_BuscarPorMetodo(IN p_Metodo VARCHAR(20))
+BEGIN
+    SELECT * FROM Pagos WHERE Metodo = p_Metodo;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Pagos_BuscarPorEstado(IN p_Estado VARCHAR(20))
+BEGIN
+    SELECT * FROM Pagos WHERE Estado = p_Estado;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Pagos_FiltrarPorMontoMayor(IN p_Monto FLOAT)
+BEGIN
+    SELECT * FROM Pagos WHERE Monto > p_Monto;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Pagos_FiltrarPorMontoMenor(IN p_Monto FLOAT)
+BEGIN
+    SELECT * FROM Pagos WHERE Monto < p_Monto;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Pagos_ListarConfirmados()
+BEGIN
+    SELECT * FROM Pagos WHERE Estado = 'Confirmado';
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Pagos_ListarPendientes()
+BEGIN
+    SELECT * FROM Pagos WHERE Estado = 'Pendiente';
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Pagos_ListarDenegados()
+BEGIN
+    SELECT * FROM Pagos WHERE Estado = 'Denegado';
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Pagos_ContarPorMetodo(IN p_Metodo VARCHAR(20))
+BEGIN
+    SELECT COUNT(*) AS total FROM Pagos WHERE Metodo = p_Metodo;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Pagos_ContarPorEstado(IN p_Estado VARCHAR(20))
+BEGIN
+    SELECT COUNT(*) AS total FROM Pagos WHERE Estado = p_Estado;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Pagos_SumarMontoConfirmado()
+BEGIN
+    SELECT COALESCE(SUM(Monto), 0) AS total FROM Pagos WHERE Estado = 'Confirmado';
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Pagos_SumarMontoPorEstado(IN p_Estado VARCHAR(20))
+BEGIN
+    SELECT COALESCE(SUM(Monto), 0) AS total FROM Pagos WHERE Estado = p_Estado;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Pagos_PromedioMonto()
+BEGIN
+    SELECT COALESCE(AVG(Monto), 0) AS promedio FROM Pagos;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Pagos_ActualizarEstado(IN p_id INT, IN p_Estado VARCHAR(20))
+BEGIN
+    UPDATE Pagos SET Estado = p_Estado WHERE Id_Pago = p_id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Pagos_ObtenerUltimoPago()
+BEGIN
+    SELECT * FROM Pagos ORDER BY Id_Pago DESC LIMIT 1;
+END //
+DELIMITER ;
 
 
-delimiter //
+-- ============================================================
+-- ==================== ENVIOS =================================
+-- ============================================================
 
-create procedure sp_clientes_total_gastado(
-    in p_id_cliente int,
-    out p_total_gastado float
-)
-begin
-    select coalesce(sum(pg.monto), 0) into p_total_gastado
-    from envios e
-    inner join ventas v on e.id_envio = v.id_envio
-    inner join pagos pg on v.id_pago = pg.id_pago
-    where e.id_cliente = p_id_cliente and pg.estado = 'confirmado';
-end //
+DELIMITER //
+CREATE PROCEDURE sp_Envios_Insertar(IN p_N_casa INT, IN p_nombre_calle VARCHAR(45), IN p_nombre_barrio VARCHAR(45), IN p_nombre_provincia VARCHAR(45), IN p_nombre_localidad VARCHAR(45))
+BEGIN
+    INSERT INTO Envios(N_casa, nombre_calle, nombre_barrio, nombre_provincia, nombre_localidad)
+    VALUES(p_N_casa, p_nombre_calle, p_nombre_barrio, p_nombre_provincia, p_nombre_localidad);
+END //
+DELIMITER ;
 
-delimiter ;
+DELIMITER //
+CREATE PROCEDURE sp_Envios_Actualizar(IN p_id INT, IN p_N_casa INT, IN p_nombre_calle VARCHAR(45), IN p_nombre_barrio VARCHAR(45), IN p_nombre_provincia VARCHAR(45), IN p_nombre_localidad VARCHAR(45))
+BEGIN
+    UPDATE Envios
+    SET N_casa = p_N_casa, nombre_calle = p_nombre_calle,
+        nombre_barrio = p_nombre_barrio, nombre_provincia = p_nombre_provincia,
+        nombre_localidad = p_nombre_localidad
+    WHERE ID_Envio = p_id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Envios_Eliminar(IN p_id INT)
+BEGIN
+    DELETE FROM Envios WHERE ID_Envio = p_id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Envios_ObtenerPorId(IN p_id INT)
+BEGIN
+    SELECT * FROM Envios WHERE ID_Envio = p_id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Envios_Listar()
+BEGIN
+    SELECT * FROM Envios;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Envios_Contar()
+BEGIN
+    SELECT COUNT(*) AS total FROM Envios;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Envios_BuscarPorBarrio(IN p_nombre_barrio VARCHAR(45))
+BEGIN
+    SELECT * FROM Envios WHERE nombre_barrio = p_nombre_barrio;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Envios_BuscarPorCalle(IN p_nombre_calle VARCHAR(45))
+BEGIN
+    SELECT * FROM Envios WHERE nombre_calle = p_nombre_calle;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Envios_ListarPorProvincia(IN p_nombre_provincia VARCHAR(45))
+BEGIN
+    SELECT * FROM Envios WHERE nombre_provincia = p_nombre_provincia;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Envios_ListarPorLocalidad(IN p_nombre_localidad VARCHAR(45))
+BEGIN
+    SELECT * FROM Envios WHERE nombre_localidad = p_nombre_localidad;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Envios_ContarPorProvincia(IN p_nombre_provincia VARCHAR(45))
+BEGIN
+    SELECT COUNT(*) AS total FROM Envios WHERE nombre_provincia = p_nombre_provincia;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Envios_ContarPorLocalidad(IN p_nombre_localidad VARCHAR(45))
+BEGIN
+    SELECT COUNT(*) AS total FROM Envios WHERE nombre_localidad = p_nombre_localidad;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Envios_ListarOrdenadoPorProvincia()
+BEGIN
+    SELECT * FROM Envios ORDER BY nombre_provincia;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Envios_ListarOrdenadoPorLocalidad()
+BEGIN
+    SELECT * FROM Envios ORDER BY nombre_localidad;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Envios_BuscarPorNumeroCasa(IN p_N_casa INT)
+BEGIN
+    SELECT * FROM Envios WHERE N_casa = p_N_casa;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Envios_ActualizarDireccion(IN p_id INT, IN p_N_casa INT, IN p_nombre_calle VARCHAR(45))
+BEGIN
+    UPDATE Envios SET N_casa = p_N_casa, nombre_calle = p_nombre_calle
+    WHERE ID_Envio = p_id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Envios_ObtenerUltimoEnvio()
+BEGIN
+    SELECT * FROM Envios ORDER BY ID_Envio DESC LIMIT 1;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Envios_ListarLimite(IN p_limite INT)
+BEGIN
+    SELECT * FROM Envios LIMIT p_limite;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Envios_ContarPorBarrio(IN p_nombre_barrio VARCHAR(45))
+BEGIN
+    SELECT COUNT(*) AS total FROM Envios WHERE nombre_barrio = p_nombre_barrio;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Envios_EnviosPorProvincia()
+BEGIN
+    SELECT nombre_provincia, COUNT(*) AS total_envios
+    FROM Envios
+    GROUP BY nombre_provincia
+    ORDER BY total_envios DESC;
+END //
+DELIMITER ;
 
 
-delimiter //
+-- ============================================================
+-- ==================== VENTAS =================================
+-- ============================================================
 
-create procedure sp_clientes_eliminar(
-    in p_id_cliente int
-)
-begin
-    declare v_cant_envios int;
-    
-    select count(*) into v_cant_envios 
-    from envios 
-    where id_cliente = p_id_cliente;
-    
-    if v_cant_envios > 0 then
-        select 'No se puede eliminar el cliente porque tiene envíos registrados.' as mensaje;
-    else
-        delete from clientes where id_cliente = p_id_cliente;
-        select 'Cliente eliminado correctamente.' as mensaje;
-    end if;
-end //
+DELIMITER //
+CREATE PROCEDURE sp_Ventas_Insertar(IN p_Fecha_venta DATETIME, IN p_cantidad_productos INT, IN p_Tipo_pedido VARCHAR(30), IN p_Id_Producto INT, IN p_id_Empleado INT, IN p_ID_Envio INT, IN p_Id_Pago INT)
+BEGIN
+    INSERT INTO Ventas(Fecha_venta, cantidad_productos, Tipo_pedido, Id_Producto, id_Empleado, ID_Envio, Id_Pago)
+    VALUES(p_Fecha_venta, p_cantidad_productos, p_Tipo_pedido, p_Id_Producto, p_id_Empleado, p_ID_Envio, p_Id_Pago);
+END //
+DELIMITER ;
 
-delimiter ;
+DELIMITER //
+CREATE PROCEDURE sp_Ventas_Actualizar(IN p_id INT, IN p_Fecha_venta DATETIME, IN p_cantidad_productos INT, IN p_Tipo_pedido VARCHAR(30), IN p_Id_Producto INT, IN p_id_Empleado INT, IN p_ID_Envio INT, IN p_Id_Pago INT)
+BEGIN
+    UPDATE Ventas
+    SET Fecha_venta = p_Fecha_venta, cantidad_productos = p_cantidad_productos,
+        Tipo_pedido = p_Tipo_pedido, Id_Producto = p_Id_Producto,
+        id_Empleado = p_id_Empleado, ID_Envio = p_ID_Envio, Id_Pago = p_Id_Pago
+    WHERE id_Ventas = p_id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Ventas_Eliminar(IN p_id INT)
+BEGIN
+    DELETE FROM Ventas WHERE id_Ventas = p_id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Ventas_ObtenerPorId(IN p_id INT)
+BEGIN
+    SELECT * FROM Ventas WHERE id_Ventas = p_id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Ventas_Listar()
+BEGIN
+    SELECT * FROM Ventas;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Ventas_Contar()
+BEGIN
+    SELECT COUNT(*) AS total FROM Ventas;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Ventas_BuscarPorTipoPedido(IN p_Tipo_pedido VARCHAR(30))
+BEGIN
+    SELECT * FROM Ventas WHERE Tipo_pedido = p_Tipo_pedido;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Ventas_BuscarPorFecha(IN p_Fecha DATE)
+BEGIN
+    SELECT * FROM Ventas WHERE DATE(Fecha_venta) = p_Fecha;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Ventas_BuscarPorEmpleado(IN p_id_Empleado INT)
+BEGIN
+    SELECT * FROM Ventas WHERE id_Empleado = p_id_Empleado;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Ventas_BuscarPorProducto(IN p_Id_Producto INT)
+BEGIN
+    SELECT * FROM Ventas WHERE Id_Producto = p_Id_Producto;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Ventas_ListarPorFechaMayor(IN p_Fecha_venta DATETIME)
+BEGIN
+    SELECT * FROM Ventas WHERE Fecha_venta > p_Fecha_venta;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Ventas_ListarPorFechaMenor(IN p_Fecha_venta DATETIME)
+BEGIN
+    SELECT * FROM Ventas WHERE Fecha_venta < p_Fecha_venta;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Ventas_ContarPorTipoPedido(IN p_Tipo_pedido VARCHAR(30))
+BEGIN
+    SELECT COUNT(*) AS total FROM Ventas WHERE Tipo_pedido = p_Tipo_pedido;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Ventas_ContarPorEmpleado(IN p_id_Empleado INT)
+BEGIN
+    SELECT COUNT(*) AS total FROM Ventas WHERE id_Empleado = p_id_Empleado;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Ventas_SumarCantidadProductos()
+BEGIN
+    SELECT COALESCE(SUM(cantidad_productos), 0) AS total FROM Ventas;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Ventas_PromedioCantidadProductos()
+BEGIN
+    SELECT COALESCE(AVG(cantidad_productos), 0) AS promedio FROM Ventas;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Ventas_ListarOrdenadoPorFechaDesc()
+BEGIN
+    SELECT * FROM Ventas ORDER BY Fecha_venta DESC;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Ventas_ActualizarCantidadProductos(IN p_id INT, IN p_cantidad_productos INT)
+BEGIN
+    UPDATE Ventas SET cantidad_productos = p_cantidad_productos WHERE id_Ventas = p_id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Ventas_DetalleCompleto(IN p_id INT)
+BEGIN
+    SELECT v.id_Ventas, v.Fecha_venta, v.Tipo_pedido, v.cantidad_productos,
+           p.Nombre AS producto, p.Modelo, p.precio,
+           (p.precio * v.cantidad_productos) AS subtotal,
+           CONCAT(e.Nombre, ' ', e.Apellido) AS empleado,
+           pg.Metodo AS metodo_pago, pg.Estado AS estado_pago,
+           en.nombre_calle, en.nombre_localidad, en.nombre_provincia,
+           CONCAT(c.Nombre, ' ', c.Apellido) AS cliente
+    FROM Ventas v
+    INNER JOIN Productos  p  ON v.Id_Producto = p.Id_Producto
+    INNER JOIN Empleados  e  ON v.id_Empleado = e.Id_Empleado
+    INNER JOIN Pagos      pg ON v.Id_Pago      = pg.Id_Pago
+    INNER JOIN Envios     en ON v.ID_Envio     = en.ID_Envio
+    LEFT  JOIN Clientes   c  ON c.id_Ventas    = v.id_Ventas
+    WHERE v.id_Ventas = p_id;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_Ventas_TotalFacturado()
+BEGIN
+    SELECT COALESCE(SUM(p.precio * v.cantidad_productos), 0) AS total_facturado
+    FROM Ventas v
+    INNER JOIN Productos p ON v.Id_Producto = p.Id_Producto;
+END //
+DELIMITER ;
 
 
-delimiter //
+-- ============================================================
+-- ==================== CLIENTES ===============================
+-- ============================================================
 
-create procedure sp_clientes_buscar_por_id(
-    in p_id_cliente int
-)
-begin
-    select * from clientes where id_cliente = p_id_cliente;
-end //
+DELIMITER //
+CREATE PROCEDURE sp_Clientes_Insertar(IN p_Nombre VARCHAR(35), IN p_Apellido VARCHAR(35), IN p_DNI INT, IN p_Telefono VARCHAR(15), IN p_Direccion VARCHAR(45), IN p_id_Ventas INT)
+BEGIN
+    INSERT INTO Clientes(Nombre, Apellido, DNI, Telefono, Direccion, id_Ventas)
+    VALUES(p_Nombre, p_Apellido, p_DNI, p_Telefono, p_Direccion, p_id_Ventas);
+END //
+DELIMITER ;
 
-delimiter ;
+DELIMITER //
+CREATE PROCEDURE sp_Clientes_Actualizar(IN p_id INT, IN p_Nombre VARCHAR(35), IN p_Apellido VARCHAR(35), IN p_DNI INT, IN p_Telefono VARCHAR(15), IN p_Direccion VARCHAR(45), IN p_id_Ventas INT)
+BEGIN
+    UPDATE Clientes
+    SET Nombre = p_Nombre, Apellido = p_Apellido, DNI = p_DNI,
+        Telefono = p_Telefono, Direccion = p_Direccion, id_Ventas = p_id_Ventas
+    WHERE Id_cliente = p_id;
+END //
+DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE sp_Clientes_Eliminar(IN p_id INT)
+BEGIN
+    DELETE FROM Clientes WHERE Id_cliente = p_id;
+END //
+DELIMITER ;
 
-delimiter //
+DELIMITER //
+CREATE PROCEDURE sp_Clientes_ObtenerPorId(IN p_id INT)
+BEGIN
+    SELECT * FROM Clientes WHERE Id_cliente = p_id;
+END //
+DELIMITER ;
 
-create procedure sp_clientes_listar_todos()
-begin
-    select * from clientes;
-end //
+DELIMITER //
+CREATE PROCEDURE sp_Clientes_Listar()
+BEGIN
+    SELECT * FROM Clientes;
+END //
+DELIMITER ;
 
-delimiter ;
+DELIMITER //
+CREATE PROCEDURE sp_Clientes_Contar()
+BEGIN
+    SELECT COUNT(*) AS total FROM Clientes;
+END //
+DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE sp_Clientes_BuscarPorNombre(IN p_Nombre VARCHAR(35))
+BEGIN
+    SELECT * FROM Clientes WHERE Nombre LIKE CONCAT('%', p_Nombre, '%');
+END //
+DELIMITER ;
 
-delimiter //
+DELIMITER //
+CREATE PROCEDURE sp_Clientes_BuscarPorApellido(IN p_Apellido VARCHAR(35))
+BEGIN
+    SELECT * FROM Clientes WHERE Apellido LIKE CONCAT('%', p_Apellido, '%');
+END //
+DELIMITER ;
 
-create procedure sp_clientes_listar_ordenados()
-begin
-    select * from clientes order by apellido asc, nombre asc;
-end //
+DELIMITER //
+CREATE PROCEDURE sp_Clientes_BuscarPorDNI(IN p_DNI INT)
+BEGIN
+    SELECT * FROM Clientes WHERE DNI = p_DNI;
+END //
+DELIMITER ;
 
-delimiter ;
+DELIMITER //
+CREATE PROCEDURE sp_Clientes_BuscarPorTelefono(IN p_Telefono VARCHAR(15))
+BEGIN
+    SELECT * FROM Clientes WHERE Telefono = p_Telefono;
+END //
+DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE sp_Clientes_BuscarPorDireccion(IN p_Direccion VARCHAR(45))
+BEGIN
+    SELECT * FROM Clientes WHERE Direccion LIKE CONCAT('%', p_Direccion, '%');
+END //
+DELIMITER ;
 
-delimiter //
+DELIMITER //
+CREATE PROCEDURE sp_Clientes_BuscarPorVenta(IN p_id_Ventas INT)
+BEGIN
+    SELECT * FROM Clientes WHERE id_Ventas = p_id_Ventas;
+END //
+DELIMITER ;
 
-create procedure sp_clientes_buscar_por_nombre(
-    in p_criterio varchar(35)
-)
-begin
-    select * from clientes 
-    where nombre like concat('%', p_criterio, '%') 
-       or apellido like concat('%', p_criterio, '%');
-end //
+DELIMITER //
+CREATE PROCEDURE sp_Clientes_ListarPorApellido(IN p_Apellido VARCHAR(35))
+BEGIN
+    SELECT * FROM Clientes WHERE Apellido = p_Apellido;
+END //
+DELIMITER ;
 
-delimiter ;
+DELIMITER //
+CREATE PROCEDURE sp_Clientes_ContarPorApellido(IN p_Apellido VARCHAR(35))
+BEGIN
+    SELECT COUNT(*) AS total FROM Clientes WHERE Apellido = p_Apellido;
+END //
+DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE sp_Clientes_Existe(IN p_id INT)
+BEGIN
+    SELECT COUNT(*) AS existe FROM Clientes WHERE Id_cliente = p_id;
+END //
+DELIMITER ;
 
-delimiter //
+DELIMITER //
+CREATE PROCEDURE sp_Clientes_ListarOrdenadoPorApellido()
+BEGIN
+    SELECT * FROM Clientes ORDER BY Apellido;
+END //
+DELIMITER ;
 
-create procedure sp_clientes_buscar_por_direccion(
-    in p_calle varchar(25)
-)
-begin
-    select * from clientes where direccion like concat('%', p_calle, '%');
-end //
+DELIMITER //
+CREATE PROCEDURE sp_Clientes_ListarLimite(IN p_limite INT)
+BEGIN
+    SELECT * FROM Clientes LIMIT p_limite;
+END //
+DELIMITER ;
 
-delimiter ;
+DELIMITER //
+CREATE PROCEDURE sp_Clientes_ActualizarTelefono(IN p_id INT, IN p_Telefono VARCHAR(15))
+BEGIN
+    UPDATE Clientes SET Telefono = p_Telefono WHERE Id_cliente = p_id;
+END //
+DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE sp_Clientes_ClientesConVentas()
+BEGIN
+    SELECT c.*, v.Fecha_venta, v.Tipo_pedido
+    FROM Clientes c
+    INNER JOIN Ventas v ON c.id_Ventas = v.id_Ventas;
+END //
+DELIMITER ;
 
-delimiter //
-
-create procedure sp_clientes_buscar_por_telefono(
-    in p_telefono int
-)
-begin
-    select * from clientes where telefono = p_telefono;
-end //
-
-delimiter ;
+DELIMITER //
+CREATE PROCEDURE sp_Clientes_TopCompras(IN p_limite INT)
+BEGIN
+    SELECT c.Id_cliente, c.Nombre, c.Apellido, c.DNI,
+           COUNT(v.id_Ventas) AS total_compras,
+           COALESCE(SUM(p.precio * v.cantidad_productos), 0) AS total_gastado
+    FROM Clientes c
+    INNER JOIN Ventas    v ON c.id_Ventas   = v.id_Ventas
+    INNER JOIN Productos p ON v.Id_Producto = p.Id_Producto
+    GROUP BY c.Id_cliente, c.Nombre, c.Apellido, c.DNI
+    ORDER BY total_gastado DESC
+    LIMIT p_limite;
+END //
+DELIMITER ;
