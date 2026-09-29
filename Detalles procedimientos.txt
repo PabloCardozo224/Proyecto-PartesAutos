@@ -1,153 +1,153 @@
 Marcas:
-sp_Marcas_Insertar: Inserta una nueva marca.
-sp_Marcas_Actualizar: Actualiza el nombre de una marca por id.
-sp_Marcas_Eliminar: Elimina una marca por id.
-sp_Marcas_ObtenerPorId: Obtiene una marca por id.
-sp_Marcas_Listar: Lista todas las marcas.
-sp_Marcas_Contar: Cuenta total de marcas.
-sp_Marcas_BuscarPorNombre: Busca marcas por nombre parcial.
-sp_Marcas_ObtenerPorNombreExacto: Obtiene marca por nombre exacto.
-sp_Marcas_ListarOrdenadoPorNombre: Lista marcas ordenadas por nombre ascendente.
-sp_Marcas_ListarOrdenadoDescendente: Lista marcas ordenadas por nombre descendente.
-sp_Marcas_ObtenerPrimera: Obtiene la primera marca por id.
-sp_Marcas_ObtenerUltima: Obtiene la última marca por id.
-sp_Marcas_Existe: Verifica si existe una marca por id.
-sp_Marcas_ContarPorNombre: Cuenta marcas cuyo nombre coincide parcialmente.
-sp_Marcas_EliminarPorNombre: Elimina una marca por nombre exacto.
-sp_Marcas_ListarConProductos: Lista marcas con cantidad de productos.
-sp_Marcas_ListarSinProductos: Lista marcas sin productos.
-sp_Marcas_ListarLimite: Lista marcas con límite indicado.
-sp_Marcas_InsertarSiNoExiste: Inserta marca solo si no existe.
-sp_Marcas_ListarTopPorVentas: Ranking de marcas por unidades vendidas y facturación.
+sp_Marcas_Insertar: Inserta una nueva marca. ej: CALL sp_Marcas_Insertar('Rolls-Royce');
+sp_Marcas_Actualizar: Actualiza el nombre de una marca por id. ej: CALL sp_Marcas_Actualizar(1, 'Toyota Motors');
+sp_Marcas_Eliminar: Elimina una marca por id. ej: CALL sp_Marcas_Eliminar(41);
+sp_Marcas_ObtenerPorId: Obtiene una marca por id. ej: CALL sp_Marcas_ObtenerPorId(1);
+sp_Marcas_Listar: Lista todas las marcas. ej: CALL sp_Marcas_Listar();
+sp_Marcas_Contar: Cuenta total de marcas. ej: CALL sp_Marcas_Contar();
+sp_Marcas_BuscarPorNombre: Busca marcas por nombre parcial. ej: CALL sp_Marcas_BuscarPorNombre('To');
+sp_Marcas_ObtenerPorNombreExacto: Obtiene marca por nombre exacto. ej: CALL sp_Marcas_ObtenerPorNombreExacto('Ford');
+sp_Marcas_ListarOrdenadoPorNombre: Lista marcas ordenadas por nombre ascendente. ej: CALL sp_Marcas_ListarOrdenadoPorNombre();
+sp_Marcas_ListarOrdenadoDescendente: Lista marcas ordenadas por nombre descendente. ej: CALL sp_Marcas_ListarOrdenadoDescendente();
+sp_Marcas_ObtenerPrimera: Obtiene la primera marca por id. ej: CALL sp_Marcas_ObtenerPrimera();
+sp_Marcas_ObtenerUltima: Obtiene la última marca por id. ej: CALL sp_Marcas_ObtenerUltima();
+sp_Marcas_Existe: Verifica si existe una marca por id. ej: CALL sp_Marcas_Existe(1);
+sp_Marcas_ContarPorNombre: Cuenta marcas cuyo nombre coincide parcialmente. ej: CALL sp_Marcas_ContarPorNombre('a');
+sp_Marcas_EliminarPorNombre: Elimina una marca por nombre exacto. ej: CALL sp_Marcas_EliminarPorNombre('Geely');
+sp_Marcas_ListarConProductos: Lista marcas con cantidad de productos. ej: CALL sp_Marcas_ListarConProductos();
+sp_Marcas_ListarSinProductos: Lista marcas sin productos. ej: CALL sp_Marcas_ListarSinProductos();
+sp_Marcas_ListarLimite: Lista marcas con límite indicado. ej: CALL sp_Marcas_ListarLimite(5);
+sp_Marcas_InsertarSiNoExiste: Inserta marca solo si no existe. ej: CALL sp_Marcas_InsertarSiNoExiste('Lexus');
+sp_Marcas_ListarTopPorVentas: Ranking de marcas por unidades vendidas y facturación. ej: CALL sp_Marcas_ListarTopPorVentas();
 
 Empleados:
-sp_Empleados_Insertar: Inserta un nuevo empleado.
-sp_Empleados_Actualizar: Actualiza todos los datos de un empleado.
-sp_Empleados_Eliminar: Elimina un empleado por id.
-sp_Empleados_ObtenerPorId: Obtiene un empleado por id.
-sp_Empleados_Listar: Lista todos los empleados.
-sp_Empleados_Contar: Cuenta total de empleados.
-sp_Empleados_BuscarPorNombre: Busca empleados por nombre parcial.
-sp_Empleados_BuscarPorApellido: Busca empleados por apellido parcial.
-sp_Empleados_BuscarPorDNI: Busca empleado por DNI.
-sp_Empleados_BuscarPorPuesto: Busca empleados por puesto.
-sp_Empleados_BuscarPorRol: Busca empleados por rol.
-sp_Empleados_ContarPorPuesto: Cuenta empleados por puesto.
-sp_Empleados_ContarPorRol: Cuenta empleados por rol.
-sp_Empleados_Existe: Verifica si existe un empleado por id.
-sp_Empleados_ListarOrdenadoPorApellido: Lista empleados ordenados por apellido.
-sp_Empleados_ListarLimite: Lista empleados con límite indicado.
-sp_Empleados_ActualizarTelefono: Actualiza teléfono de un empleado.
-sp_Empleados_ListarPorPuestoYRol: Lista empleados filtrando por puesto y rol a la vez.
-sp_Empleados_TopVentas: Ranking de empleados por cantidad de ventas y unidades vendidas.
-sp_Empleados_VentasPorEmpleado: Detalle de ventas realizadas por un empleado.
+sp_Empleados_Insertar: Inserta un nuevo empleado. ej: CALL sp_Empleados_Insertar('Juan', 'Pérez', 40111222, '1144445555', 'Vendedor', 'Atencion al cliente');
+sp_Empleados_Actualizar: Actualiza todos los datos de un empleado. ej: CALL sp_Empleados_Actualizar(1, 'Marcos', 'Rojo', 30111001, '1120003001', 'Supervisor', 'Control de personal');
+sp_Empleados_Eliminar: Elimina un empleado por id. ej: CALL sp_Empleados_Eliminar(41);
+sp_Empleados_ObtenerPorId: Obtiene un empleado por id. ej: CALL sp_Empleados_ObtenerPorId(1);
+sp_Empleados_Listar: Lista todos los empleados. ej: CALL sp_Empleados_Listar();
+sp_Empleados_Contar: Cuenta total de empleados. ej: CALL sp_Empleados_Contar();
+sp_Empleados_BuscarPorNombre: Busca empleados por nombre parcial. ej: CALL sp_Empleados_BuscarPorNombre('Mar');
+sp_Empleados_BuscarPorApellido: Busca empleados por apellido parcial. ej: CALL sp_Empleados_BuscarPorApellido('Pérez');
+sp_Empleados_BuscarPorDNI: Busca empleado por DNI. ej: CALL sp_Empleados_BuscarPorDNI(30111001);
+sp_Empleados_BuscarPorPuesto: Busca empleados por puesto. ej: CALL sp_Empleados_BuscarPorPuesto('Vendedor');
+sp_Empleados_BuscarPorRol: Busca empleados por rol. ej: CALL sp_Empleados_BuscarPorRol('Atencion al cliente');
+sp_Empleados_ContarPorPuesto: Cuenta empleados por puesto. ej: CALL sp_Empleados_ContarPorPuesto('Vendedor');
+sp_Empleados_ContarPorRol: Cuenta empleados por rol. ej: CALL sp_Empleados_ContarPorRol('Atencion al cliente');
+sp_Empleados_Existe: Verifica si existe un empleado por id. ej: CALL sp_Empleados_Existe(1);
+sp_Empleados_ListarOrdenadoPorApellido: Lista empleados ordenados por apellido. ej: CALL sp_Empleados_ListarOrdenadoPorApellido();
+sp_Empleados_ListarLimite: Lista empleados con límite indicado. ej: CALL sp_Empleados_ListarLimite(5);
+sp_Empleados_ActualizarTelefono: Actualiza teléfono de un empleado. ej: CALL sp_Empleados_ActualizarTelefono(1, '1199998888');
+sp_Empleados_ListarPorPuestoYRol: Lista empleados filtrando por puesto y rol a la vez. ej: CALL sp_Empleados_ListarPorPuestoYRol('Vendedor', 'Atencion al cliente');
+sp_Empleados_TopVentas: Ranking de empleados por cantidad de ventas y unidades vendidas. ej: CALL sp_Empleados_TopVentas(5);
+sp_Empleados_VentasPorEmpleado: Detalle de ventas realizadas por un empleado. ej: CALL sp_Empleados_VentasPorEmpleado(1);
 
 Productos:
-sp_Productos_Insertar: Inserta un nuevo producto.
-sp_Productos_Actualizar: Actualiza todos los datos de un producto.
-sp_Productos_Eliminar: Elimina un producto por id.
-sp_Productos_ObtenerPorId: Obtiene un producto por id.
-sp_Productos_Listar: Lista todos los productos.
-sp_Productos_Contar: Cuenta total de productos.
-sp_Productos_BuscarPorNombre: Busca productos por nombre parcial.
-sp_Productos_BuscarPorTipoParte: Busca productos por tipo de parte.
-sp_Productos_BuscarPorMarca: Busca productos por marca.
-sp_Productos_BuscarPorTipoVehiculo: Busca productos por tipo de vehículo.
-sp_Productos_FiltrarPorPrecioMayor: Lista productos con precio mayor al indicado.
-sp_Productos_FiltrarPorPrecioMenor: Lista productos con precio menor al indicado.
-sp_Productos_ListarPorTamano: Lista productos por tamaño.
-sp_Productos_ListarPorColor: Lista productos por color.
-sp_Productos_ListarPorModelo: Lista productos por modelo parcial.
-sp_Productos_ContarPorTipoParte: Cuenta productos por tipo de parte.
-sp_Productos_ContarPorMarca: Cuenta productos por marca.
-sp_Productos_ActualizarPrecio: Actualiza el precio de un producto.
-sp_Productos_ListarConMarca: Lista productos con el nombre de su marca.
-sp_Productos_StockBajo: Lista productos con stock por debajo de un umbral.
+sp_Productos_Insertar: Inserta un nuevo producto. ej: CALL sp_Productos_Insertar('Filtro de aire', 'Filtro deportivo', 'Motor', 'Chico', 50, 12000, 'Rojo', 'Universal', 1, 'auto');
+sp_Productos_Actualizar: Actualiza todos los datos de un producto. ej: CALL sp_Productos_Actualizar(1, 'Amortiguador delantero', 'Amortiguador para corsa', 'Suspension', 'Mediano', 100, 45000, 'Negro', 'Chevrolet corsa 2010', 3, 'auto');
+sp_Productos_Eliminar: Elimina un producto por id. ej: CALL sp_Productos_Eliminar(41);
+sp_Productos_ObtenerPorId: Obtiene un producto por id. ej: CALL sp_Productos_ObtenerPorId(1);
+sp_Productos_Listar: Lista todos los productos. ej: CALL sp_Productos_Listar();
+sp_Productos_Contar: Cuenta total de productos. ej: CALL sp_Productos_Contar();
+sp_Productos_BuscarPorNombre: Busca productos por nombre parcial. ej: CALL sp_Productos_BuscarPorNombre('Filtro');
+sp_Productos_BuscarPorTipoParte: Busca productos por tipo de parte. ej: CALL sp_Productos_BuscarPorTipoParte('Motor');
+sp_Productos_BuscarPorMarca: Busca productos por marca. ej: CALL sp_Productos_BuscarPorMarca(9);
+sp_Productos_BuscarPorTipoVehiculo: Busca productos por tipo de vehículo. ej: CALL sp_Productos_BuscarPorTipoVehiculo('moto');
+sp_Productos_FiltrarPorPrecioMayor: Lista productos con precio mayor al indicado. ej: CALL sp_Productos_FiltrarPorPrecioMayor(100000);
+sp_Productos_FiltrarPorPrecioMenor: Lista productos con precio menor al indicado. ej: CALL sp_Productos_FiltrarPorPrecioMenor(10000);
+sp_Productos_ListarPorTamano: Lista productos por tamaño. ej: CALL sp_Productos_ListarPorTamano('Grande');
+sp_Productos_ListarPorColor: Lista productos por color. ej: CALL sp_Productos_ListarPorColor('Negro');
+sp_Productos_ListarPorModelo: Lista productos por modelo parcial. ej: CALL sp_Productos_ListarPorModelo('Corsa');
+sp_Productos_ContarPorTipoParte: Cuenta productos por tipo de parte. ej: CALL sp_Productos_ContarPorTipoParte('Motor');
+sp_Productos_ContarPorMarca: Cuenta productos por marca. ej: CALL sp_Productos_ContarPorMarca(9);
+sp_Productos_ActualizarPrecio: Actualiza el precio de un producto. ej: CALL sp_Productos_ActualizarPrecio(1, 50000);
+sp_Productos_ListarConMarca: Lista productos con el nombre de su marca. ej: CALL sp_Productos_ListarConMarca();
+sp_Productos_StockBajo: Lista productos con stock por debajo de un umbral. ej: CALL sp_Productos_StockBajo(20);
 
 Pagos:
-sp_Pagos_Insertar: Inserta un nuevo pago.
-sp_Pagos_Actualizar: Actualiza todos los datos de un pago.
-sp_Pagos_Eliminar: Elimina un pago por id.
-sp_Pagos_ObtenerPorId: Obtiene un pago por id.
-sp_Pagos_Listar: Lista todos los pagos.
-sp_Pagos_Contar: Cuenta total de pagos.
-sp_Pagos_BuscarPorMetodo: Busca pagos por método.
-sp_Pagos_BuscarPorEstado: Busca pagos por estado.
-sp_Pagos_FiltrarPorMontoMayor: Lista pagos con monto mayor al indicado.
-sp_Pagos_FiltrarPorMontoMenor: Lista pagos con monto menor al indicado.
-sp_Pagos_ListarConfirmados: Lista pagos confirmados.
-sp_Pagos_ListarPendientes: Lista pagos pendientes.
-sp_Pagos_ListarDenegados: Lista pagos denegados.
-sp_Pagos_ContarPorMetodo: Cuenta pagos por método.
-sp_Pagos_ContarPorEstado: Cuenta pagos por estado.
-sp_Pagos_SumarMontoConfirmado: Suma montos de pagos confirmados.
-sp_Pagos_SumarMontoPorEstado: Suma montos de pagos por estado.
-sp_Pagos_PromedioMonto: Calcula promedio de montos de pagos.
-sp_Pagos_ActualizarEstado: Actualiza estado de un pago.
-sp_Pagos_ObtenerUltimoPago: Obtiene el último pago registrado.
+sp_Pagos_Insertar: Inserta un nuevo pago. ej: CALL sp_Pagos_Insertar('Efectivo', 50000, 'Confirmado');
+sp_Pagos_Actualizar: Actualiza todos los datos de un pago. ej: CALL sp_Pagos_Actualizar(1, 'Transferencia', 45000, 'Confirmado');
+sp_Pagos_Eliminar: Elimina un pago por id. ej: CALL sp_Pagos_Eliminar(41);
+sp_Pagos_ObtenerPorId: Obtiene un pago por id. ej: CALL sp_Pagos_ObtenerPorId(1);
+sp_Pagos_Listar: Lista todos los pagos. ej: CALL sp_Pagos_Listar();
+sp_Pagos_Contar: Cuenta total de pagos. ej: CALL sp_Pagos_Contar();
+sp_Pagos_BuscarPorMetodo: Busca pagos por método. ej: CALL sp_Pagos_BuscarPorMetodo('Efectivo');
+sp_Pagos_BuscarPorEstado: Busca pagos por estado. ej: CALL sp_Pagos_BuscarPorEstado('Confirmado');
+sp_Pagos_FiltrarPorMontoMayor: Lista pagos con monto mayor al indicado. ej: CALL sp_Pagos_FiltrarPorMontoMayor(100000);
+sp_Pagos_FiltrarPorMontoMenor: Lista pagos con monto menor al indicado. ej: CALL sp_Pagos_FiltrarPorMontoMenor(10000);
+sp_Pagos_ListarConfirmados: Lista pagos confirmados. ej: CALL sp_Pagos_ListarConfirmados();
+sp_Pagos_ListarPendientes: Lista pagos pendientes. ej: CALL sp_Pagos_ListarPendientes();
+sp_Pagos_ListarDenegados: Lista pagos denegados. ej: CALL sp_Pagos_ListarDenegados();
+sp_Pagos_ContarPorMetodo: Cuenta pagos por método. ej: CALL sp_Pagos_ContarPorMetodo('Efectivo');
+sp_Pagos_ContarPorEstado: Cuenta pagos por estado. ej: CALL sp_Pagos_ContarPorEstado('Confirmado');
+sp_Pagos_SumarMontoConfirmado: Suma montos de pagos confirmados. ej: CALL sp_Pagos_SumarMontoConfirmado();
+sp_Pagos_SumarMontoPorEstado: Suma montos de pagos por estado. ej: CALL sp_Pagos_SumarMontoPorEstado('Pendiente');
+sp_Pagos_PromedioMonto: Calcula promedio de montos de pagos. ej: CALL sp_Pagos_PromedioMonto();
+sp_Pagos_ActualizarEstado: Actualiza estado de un pago. ej: CALL sp_Pagos_ActualizarEstado(1, 'Pendiente');
+sp_Pagos_ObtenerUltimoPago: Obtiene el último pago registrado. ej: CALL sp_Pagos_ObtenerUltimoPago();
 
 Envios:
-sp_Envios_Insertar: Inserta un nuevo envío.
-sp_Envios_Actualizar: Actualiza todos los datos de un envío.
-sp_Envios_Eliminar: Elimina un envío por id.
-sp_Envios_ObtenerPorId: Obtiene un envío por id.
-sp_Envios_Listar: Lista todos los envíos.
-sp_Envios_Contar: Cuenta total de envíos.
-sp_Envios_BuscarPorBarrio: Busca envíos por barrio.
-sp_Envios_BuscarPorCalle: Busca envíos por calle.
-sp_Envios_ListarPorProvincia: Lista envíos por provincia.
-sp_Envios_ListarPorLocalidad: Lista envíos por localidad.
-sp_Envios_ContarPorProvincia: Cuenta envíos por provincia.
-sp_Envios_ContarPorLocalidad: Cuenta envíos por localidad.
-sp_Envios_ListarOrdenadoPorProvincia: Lista envíos ordenados por provincia.
-sp_Envios_ListarOrdenadoPorLocalidad: Lista envíos ordenados por localidad.
-sp_Envios_BuscarPorNumeroCasa: Busca envíos por número de casa.
-sp_Envios_ActualizarDireccion: Actualiza número y calle de un envío.
-sp_Envios_ObtenerUltimoEnvio: Obtiene el último envío registrado.
-sp_Envios_ListarLimite: Lista envíos con límite indicado.
-sp_Envios_ContarPorBarrio: Cuenta envíos por barrio.
-sp_Envios_EnviosPorProvincia: Agrupa envíos por provincia con su total.
+sp_Envios_Insertar: Inserta un nuevo envío. ej: CALL sp_Envios_Insertar(100, 'Av. Siempreviva', 'Centro', 'Buenos Aires', 'La Plata');
+sp_Envios_Actualizar: Actualiza todos los datos de un envío. ej: CALL sp_Envios_Actualizar(1, 123, 'Av. de Mayo', 'Centro', 'Buenos Aires', 'La Plata');
+sp_Envios_Eliminar: Elimina un envío por id. ej: CALL sp_Envios_Eliminar(41);
+sp_Envios_ObtenerPorId: Obtiene un envío por id. ej: CALL sp_Envios_ObtenerPorId(1);
+sp_Envios_Listar: Lista todos los envíos. ej: CALL sp_Envios_Listar();
+sp_Envios_Contar: Cuenta total de envíos. ej: CALL sp_Envios_Contar();
+sp_Envios_BuscarPorBarrio: Busca envíos por barrio. ej: CALL sp_Envios_BuscarPorBarrio('Centro');
+sp_Envios_BuscarPorCalle: Busca envíos por calle. ej: CALL sp_Envios_BuscarPorCalle('Rivadavia');
+sp_Envios_ListarPorProvincia: Lista envíos por provincia. ej: CALL sp_Envios_ListarPorProvincia('Córdoba');
+sp_Envios_ListarPorLocalidad: Lista envíos por localidad. ej: CALL sp_Envios_ListarPorLocalidad('Rosario');
+sp_Envios_ContarPorProvincia: Cuenta envíos por provincia. ej: CALL sp_Envios_ContarPorProvincia('Córdoba');
+sp_Envios_ContarPorLocalidad: Cuenta envíos por localidad. ej: CALL sp_Envios_ContarPorLocalidad('Rosario');
+sp_Envios_ListarOrdenadoPorProvincia: Lista envíos ordenados por provincia. ej: CALL sp_Envios_ListarOrdenadoPorProvincia();
+sp_Envios_ListarOrdenadoPorLocalidad: Lista envíos ordenados por localidad. ej: CALL sp_Envios_ListarOrdenadoPorLocalidad();
+sp_Envios_BuscarPorNumeroCasa: Busca envíos por número de casa. ej: CALL sp_Envios_BuscarPorNumeroCasa(123);
+sp_Envios_ActualizarDireccion: Actualiza número y calle de un envío. ej: CALL sp_Envios_ActualizarDireccion(1, 200, 'Belgrano');
+sp_Envios_ObtenerUltimoEnvio: Obtiene el último envío registrado. ej: CALL sp_Envios_ObtenerUltimoEnvio();
+sp_Envios_ListarLimite: Lista envíos con límite indicado. ej: CALL sp_Envios_ListarLimite(5);
+sp_Envios_ContarPorBarrio: Cuenta envíos por barrio. ej: CALL sp_Envios_ContarPorBarrio('Centro');
+sp_Envios_EnviosPorProvincia: Agrupa envíos por provincia con su total. ej: CALL sp_Envios_EnviosPorProvincia();
 
 Ventas:
-sp_Ventas_Insertar: Inserta una nueva venta.
-sp_Ventas_Actualizar: Actualiza todos los datos de una venta.
-sp_Ventas_Eliminar: Elimina una venta por id.
-sp_Ventas_ObtenerPorId: Obtiene una venta por id.
-sp_Ventas_Listar: Lista todas las ventas.
-sp_Ventas_Contar: Cuenta total de ventas.
-sp_Ventas_BuscarPorTipoPedido: Busca ventas por tipo de pedido.
-sp_Ventas_BuscarPorFecha: Busca ventas por fecha.
-sp_Ventas_BuscarPorEmpleado: Busca ventas por empleado.
-sp_Ventas_BuscarPorProducto: Busca ventas por producto.
-sp_Ventas_ListarPorFechaMayor: Lista ventas posteriores a una fecha.
-sp_Ventas_ListarPorFechaMenor: Lista ventas anteriores a una fecha.
-sp_Ventas_ContarPorTipoPedido: Cuenta ventas por tipo de pedido.
-sp_Ventas_ContarPorEmpleado: Cuenta ventas por empleado.
-sp_Ventas_SumarCantidadProductos: Suma cantidad de productos vendidos.
-sp_Ventas_PromedioCantidadProductos: Calcula promedio de cantidad de productos por venta.
-sp_Ventas_ListarOrdenadoPorFechaDesc: Lista ventas ordenadas por fecha descendente.
-sp_Ventas_ActualizarCantidadProductos: Actualiza cantidad de productos de una venta.
-sp_Ventas_DetalleCompleto: Devuelve una venta con producto, empleado, pago, envío y cliente.
-sp_Ventas_TotalFacturado: Suma total facturada por todas las ventas.
+sp_Ventas_Insertar: Inserta una nueva venta. ej: CALL sp_Ventas_Insertar('2024-03-01 10:00:00', 1, 'Web', 1, 1, 1, 1);
+sp_Ventas_Actualizar: Actualiza todos los datos de una venta. ej: CALL sp_Ventas_Actualizar(1, '2024-01-10 08:30:00', 1, 'Web', 1, 1, 1, 1);
+sp_Ventas_Eliminar: Elimina una venta por id. ej: CALL sp_Ventas_Eliminar(41);
+sp_Ventas_ObtenerPorId: Obtiene una venta por id. ej: CALL sp_Ventas_ObtenerPorId(1);
+sp_Ventas_Listar: Lista todas las ventas. ej: CALL sp_Ventas_Listar();
+sp_Ventas_Contar: Cuenta total de ventas. ej: CALL sp_Ventas_Contar();
+sp_Ventas_BuscarPorTipoPedido: Busca ventas por tipo de pedido. ej: CALL sp_Ventas_BuscarPorTipoPedido('Web');
+sp_Ventas_BuscarPorFecha: Busca ventas por fecha. ej: CALL sp_Ventas_BuscarPorFecha('2024-01-10');
+sp_Ventas_BuscarPorEmpleado: Busca ventas por empleado. ej: CALL sp_Ventas_BuscarPorEmpleado(1);
+sp_Ventas_BuscarPorProducto: Busca ventas por producto. ej: CALL sp_Ventas_BuscarPorProducto(1);
+sp_Ventas_ListarPorFechaMayor: Lista ventas posteriores a una fecha. ej: CALL sp_Ventas_ListarPorFechaMayor('2024-02-01 00:00:00');
+sp_Ventas_ListarPorFechaMenor: Lista ventas anteriores a una fecha. ej: CALL sp_Ventas_ListarPorFechaMenor('2024-02-01 00:00:00');
+sp_Ventas_ContarPorTipoPedido: Cuenta ventas por tipo de pedido. ej: CALL sp_Ventas_ContarPorTipoPedido('Web');
+sp_Ventas_ContarPorEmpleado: Cuenta ventas por empleado. ej: CALL sp_Ventas_ContarPorEmpleado(1);
+sp_Ventas_SumarCantidadProductos: Suma cantidad de productos vendidos. ej: CALL sp_Ventas_SumarCantidadProductos();
+sp_Ventas_PromedioCantidadProductos: Calcula promedio de cantidad de productos por venta. ej: CALL sp_Ventas_PromedioCantidadProductos();
+sp_Ventas_ListarOrdenadoPorFechaDesc: Lista ventas ordenadas por fecha descendente. ej: CALL sp_Ventas_ListarOrdenadoPorFechaDesc();
+sp_Ventas_ActualizarCantidadProductos: Actualiza cantidad de productos de una venta. ej: CALL sp_Ventas_ActualizarCantidadProductos(1, 3);
+sp_Ventas_DetalleCompleto: Devuelve una venta con producto, empleado, pago, envío y cliente. ej: CALL sp_Ventas_DetalleCompleto(1);
+sp_Ventas_TotalFacturado: Suma total facturada por todas las ventas. ej: CALL sp_Ventas_TotalFacturado();
 
 Clientes:
-sp_Clientes_Insertar: Inserta un nuevo cliente.
-sp_Clientes_Actualizar: Actualiza todos los datos de un cliente.
-sp_Clientes_Eliminar: Elimina un cliente por id.
-sp_Clientes_ObtenerPorId: Obtiene un cliente por id.
-sp_Clientes_Listar: Lista todos los clientes.
-sp_Clientes_Contar: Cuenta total de clientes.
-sp_Clientes_BuscarPorNombre: Busca clientes por nombre parcial.
-sp_Clientes_BuscarPorApellido: Busca clientes por apellido parcial.
-sp_Clientes_BuscarPorDNI: Busca cliente por DNI.
-sp_Clientes_BuscarPorTelefono: Busca clientes por teléfono.
-sp_Clientes_BuscarPorDireccion: Busca clientes por dirección parcial.
-sp_Clientes_BuscarPorVenta: Busca clientes por venta.
-sp_Clientes_ListarPorApellido: Lista clientes por apellido.
-sp_Clientes_ContarPorApellido: Cuenta clientes por apellido.
-sp_Clientes_Existe: Verifica si existe un cliente por id.
-sp_Clientes_ListarOrdenadoPorApellido: Lista clientes ordenados por apellido.
-sp_Clientes_ListarLimite: Lista clientes con límite indicado.
-sp_Clientes_ActualizarTelefono: Actualiza teléfono de un cliente.
-sp_Clientes_ClientesConVentas: Lista clientes junto con datos de sus ventas.
-sp_Clientes_TopCompras: Ranking de clientes por total gastado.
+sp_Clientes_Insertar: Inserta un nuevo cliente. ej: CALL sp_Clientes_Insertar('Juan', 'Pérez', 30111222, '1144445555', 'Av. de Mayo 123', 1);
+sp_Clientes_Actualizar: Actualiza todos los datos de un cliente. ej: CALL sp_Clientes_Actualizar(1, 'Juan', 'Pérez', 30111222, '1144445555', 'Av. de Mayo 123', 1);
+sp_Clientes_Eliminar: Elimina un cliente por id. ej: CALL sp_Clientes_Eliminar(41);
+sp_Clientes_ObtenerPorId: Obtiene un cliente por id. ej: CALL sp_Clientes_ObtenerPorId(1);
+sp_Clientes_Listar: Lista todos los clientes. ej: CALL sp_Clientes_Listar();
+sp_Clientes_Contar: Cuenta total de clientes. ej: CALL sp_Clientes_Contar();
+sp_Clientes_BuscarPorNombre: Busca clientes por nombre parcial. ej: CALL sp_Clientes_BuscarPorNombre('Juan');
+sp_Clientes_BuscarPorApellido: Busca clientes por apellido parcial. ej: CALL sp_Clientes_BuscarPorApellido('Pérez');
+sp_Clientes_BuscarPorDNI: Busca cliente por DNI. ej: CALL sp_Clientes_BuscarPorDNI(30111222);
+sp_Clientes_BuscarPorTelefono: Busca clientes por teléfono. ej: CALL sp_Clientes_BuscarPorTelefono('1144445555');
+sp_Clientes_BuscarPorDireccion: Busca clientes por dirección parcial. ej: CALL sp_Clientes_BuscarPorDireccion('Mayo');
+sp_Clientes_BuscarPorVenta: Busca clientes por venta. ej: CALL sp_Clientes_BuscarPorVenta(1);
+sp_Clientes_ListarPorApellido: Lista clientes por apellido. ej: CALL sp_Clientes_ListarPorApellido('Pérez');
+sp_Clientes_ContarPorApellido: Cuenta clientes por apellido. ej: CALL sp_Clientes_ContarPorApellido('Pérez');
+sp_Clientes_Existe: Verifica si existe un cliente por id. ej: CALL sp_Clientes_Existe(1);
+sp_Clientes_ListarOrdenadoPorApellido: Lista clientes ordenados por apellido. ej: CALL sp_Clientes_ListarOrdenadoPorApellido();
+sp_Clientes_ListarLimite: Lista clientes con límite indicado. ej: CALL sp_Clientes_ListarLimite(5);
+sp_Clientes_ActualizarTelefono: Actualiza teléfono de un cliente. ej: CALL sp_Clientes_ActualizarTelefono(1, '1199998888');
+sp_Clientes_ClientesConVentas: Lista clientes junto con datos de sus ventas. ej: CALL sp_Clientes_ClientesConVentas();
+sp_Clientes_TopCompras: Ranking de clientes por total gastado. ej: CALL sp_Clientes_TopCompras(5);
