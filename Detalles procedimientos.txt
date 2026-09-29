@@ -1,0 +1,153 @@
+Marcas:
+sp_Marcas_Insertar: Inserta una nueva marca.
+sp_Marcas_Actualizar: Actualiza el nombre de una marca por id.
+sp_Marcas_Eliminar: Elimina una marca por id.
+sp_Marcas_ObtenerPorId: Obtiene una marca por id.
+sp_Marcas_Listar: Lista todas las marcas.
+sp_Marcas_Contar: Cuenta total de marcas.
+sp_Marcas_BuscarPorNombre: Busca marcas por nombre parcial.
+sp_Marcas_ListarOrdenadoPorNombre: Lista marcas ordenadas por nombre.
+sp_Marcas_ObtenerPrimera: Obtiene la primera marca.
+sp_Marcas_ObtenerUltima: Obtiene la última marca.
+sp_Marcas_Existe: Verifica si existe una marca por id.
+sp_Marcas_ContarPorNombre: Cuenta marcas cuyo nombre coincide parcialmente.
+sp_Marcas_EliminarPorNombre: Elimina una marca por nombre exacto.
+sp_Marcas_ActualizarNombrePorId: Actualiza el nombre de una marca por id.
+sp_Marcas_ListarConProductos: Lista marcas con cantidad de productos.
+sp_Marcas_ListarSinProductos: Lista marcas sin productos.
+sp_Marcas_ContarProductosPorMarca: Cuenta productos de una marca.
+sp_Marcas_ObtenerPorNombreExacto: Obtiene marca por nombre exacto.
+sp_Marcas_ListarLimite: Lista marcas con límite indicado.
+sp_Marcas_InsertarSiNoExiste: Inserta marca solo si no existe.
+
+Empleados:
+sp_Empleados_Insertar: Inserta un nuevo empleado.
+sp_Empleados_Actualizar: Actualiza todos los datos de un empleado.
+sp_Empleados_Eliminar: Elimina un empleado por id.
+sp_Empleados_ObtenerPorId: Obtiene un empleado por id.
+sp_Empleados_Listar: Lista todos los empleados.
+sp_Empleados_Contar: Cuenta total de empleados.
+sp_Empleados_BuscarPorNombre: Busca empleados por nombre parcial.
+sp_Empleados_BuscarPorApellido: Busca empleados por apellido parcial.
+sp_Empleados_BuscarPorDNI: Busca empleado por DNI.
+sp_Empleados_BuscarPorPuesto: Busca empleados por puesto.
+sp_Empleados_BuscarPorRol: Busca empleados por rol.
+sp_Empleados_ListarPorPuesto: Lista empleados por puesto.
+sp_Empleados_ListarPorRol: Lista empleados por rol.
+sp_Empleados_ContarPorPuesto: Cuenta empleados por puesto.
+sp_Empleados_ContarPorRol: Cuenta empleados por rol.
+sp_Empleados_ObtenerPorDNI: Obtiene empleado por DNI.
+sp_Empleados_Existe: Verifica si existe un empleado por id.
+sp_Empleados_ListarOrdenadoPorApellido: Lista empleados ordenados por apellido.
+sp_Empleados_ListarLimite: Lista empleados con límite indicado.
+sp_Empleados_ActualizarTelefono: Actualiza teléfono de un empleado.
+
+Productos:
+sp_Productos_Insertar: Inserta un nuevo producto.
+sp_Productos_Actualizar: Actualiza todos los datos de un producto.
+sp_Productos_Eliminar: Elimina un producto por id.
+sp_Productos_ObtenerPorId: Obtiene un producto por id.
+sp_Productos_Listar: Lista todos los productos.
+sp_Productos_Contar: Cuenta total de productos.
+sp_Productos_BuscarPorNombre: Busca productos por nombre parcial.
+sp_Productos_BuscarPorTipoParte: Busca productos por tipo de parte.
+sp_Productos_BuscarPorMarca: Busca productos por marca.
+sp_Productos_BuscarPorTipoVehiculo: Busca productos por tipo de vehículo.
+sp_Productos_FiltrarPorPrecioMayor: Lista productos con precio mayor al indicado.
+sp_Productos_FiltrarPorPrecioMenor: Lista productos con precio menor al indicado.
+sp_Productos_FiltrarPorCantidadMenor: Lista productos con cantidad menor a la indicada.
+sp_Productos_FiltrarPorCantidadMayor: Lista productos con cantidad mayor a la indicada.
+sp_Productos_ListarPorTamano: Lista productos por tamaño.
+sp_Productos_ListarPorColor: Lista productos por color.
+sp_Productos_ListarPorModelo: Lista productos por modelo parcial.
+sp_Productos_ContarPorTipoParte: Cuenta productos por tipo de parte.
+sp_Productos_ContarPorMarca: Cuenta productos por marca.
+sp_Productos_ActualizarPrecio: Actualiza el precio de un producto.
+
+Pagos:
+sp_Pagos_Insertar: Inserta un nuevo pago.
+sp_Pagos_Actualizar: Actualiza todos los datos de un pago.
+sp_Pagos_Eliminar: Elimina un pago por id.
+sp_Pagos_ObtenerPorId: Obtiene un pago por id.
+sp_Pagos_Listar: Lista todos los pagos.
+sp_Pagos_Contar: Cuenta total de pagos.
+sp_Pagos_BuscarPorMetodo: Busca pagos por método.
+sp_Pagos_BuscarPorEstado: Busca pagos por estado.
+sp_Pagos_FiltrarPorMontoMayor: Lista pagos con monto mayor al indicado.
+sp_Pagos_FiltrarPorMontoMenor: Lista pagos con monto menor al indicado.
+sp_Pagos_ListarConfirmados: Lista pagos confirmados.
+sp_Pagos_ListarPendientes: Lista pagos pendientes.
+sp_Pagos_ListarDenegados: Lista pagos denegados.
+sp_Pagos_ContarPorMetodo: Cuenta pagos por método.
+sp_Pagos_ContarPorEstado: Cuenta pagos por estado.
+sp_Pagos_SumarMontoConfirmado: Suma montos de pagos confirmados.
+sp_Pagos_SumarMontoPorEstado: Suma montos de pagos por estado.
+sp_Pagos_PromedioMonto: Calcula promedio de montos de pagos.
+sp_Pagos_ActualizarEstado: Actualiza estado de un pago.
+sp_Pagos_ObtenerUltimoPago: Obtiene el último pago registrado.
+
+Envios:
+sp_Envios_Insertar: Inserta un nuevo envío.
+sp_Envios_Actualizar: Actualiza todos los datos de un envío.
+sp_Envios_Eliminar: Elimina un envío por id.
+sp_Envios_ObtenerPorId: Obtiene un envío por id.
+sp_Envios_Listar: Lista todos los envíos.
+sp_Envios_Contar: Cuenta total de envíos.
+sp_Envios_BuscarPorProvincia: Busca envíos por provincia.
+sp_Envios_BuscarPorLocalidad: Busca envíos por localidad.
+sp_Envios_BuscarPorBarrio: Busca envíos por barrio.
+sp_Envios_BuscarPorCalle: Busca envíos por calle.
+sp_Envios_ListarPorProvincia: Lista envíos por provincia.
+sp_Envios_ListarPorLocalidad: Lista envíos por localidad.
+sp_Envios_ContarPorProvincia: Cuenta envíos por provincia.
+sp_Envios_ContarPorLocalidad: Cuenta envíos por localidad.
+sp_Envios_ListarOrdenadoPorProvincia: Lista envíos ordenados por provincia.
+sp_Envios_ListarOrdenadoPorLocalidad: Lista envíos ordenados por localidad.
+sp_Envios_BuscarPorNumeroCasa: Busca envíos por número de casa.
+sp_Envios_ActualizarDireccion: Actualiza número y calle de un envío.
+sp_Envios_ObtenerUltimoEnvio: Obtiene el último envío registrado.
+sp_Envios_ListarLimite: Lista envíos con límite indicado.
+
+Ventas:
+sp_Ventas_Insertar: Inserta una nueva venta.
+sp_Ventas_Actualizar: Actualiza todos los datos de una venta.
+sp_Ventas_Eliminar: Elimina una venta por id.
+sp_Ventas_ObtenerPorId: Obtiene una venta por id.
+sp_Ventas_Listar: Lista todas las ventas.
+sp_Ventas_Contar: Cuenta total de ventas.
+sp_Ventas_BuscarPorTipoPedido: Busca ventas por tipo de pedido.
+sp_Ventas_BuscarPorFecha: Busca ventas por fecha.
+sp_Ventas_BuscarPorEmpleado: Busca ventas por empleado.
+sp_Ventas_BuscarPorProducto: Busca ventas por producto.
+sp_Ventas_BuscarPorPago: Busca ventas por pago.
+sp_Ventas_BuscarPorEnvio: Busca ventas por envío.
+sp_Ventas_ListarPorFechaMayor: Lista ventas posteriores a una fecha.
+sp_Ventas_ListarPorFechaMenor: Lista ventas anteriores a una fecha.
+sp_Ventas_ContarPorTipoPedido: Cuenta ventas por tipo de pedido.
+sp_Ventas_ContarPorEmpleado: Cuenta ventas por empleado.
+sp_Ventas_SumarCantidadProductos: Suma cantidad de productos vendidos.
+sp_Ventas_PromedioCantidadProductos: Calcula promedio de cantidad de productos por venta.
+sp_Ventas_ListarOrdenadoPorFechaDesc: Lista ventas ordenadas por fecha descendente.
+sp_Ventas_ActualizarCantidadProductos: Actualiza cantidad de productos de una venta.
+
+Clientes:
+sp_Clientes_Insertar: Inserta un nuevo cliente.
+sp_Clientes_Actualizar: Actualiza todos los datos de un cliente.
+sp_Clientes_Eliminar: Elimina un cliente por id.
+sp_Clientes_ObtenerPorId: Obtiene un cliente por id.
+sp_Clientes_Listar: Lista todos los clientes.
+sp_Clientes_Contar: Cuenta total de clientes.
+sp_Clientes_BuscarPorNombre: Busca clientes por nombre parcial.
+sp_Clientes_BuscarPorApellido: Busca clientes por apellido parcial.
+sp_Clientes_BuscarPorDNI: Busca cliente por DNI.
+sp_Clientes_BuscarPorTelefono: Busca clientes por teléfono.
+sp_Clientes_BuscarPorDireccion: Busca clientes por dirección parcial.
+sp_Clientes_BuscarPorVenta: Busca clientes por venta.
+sp_Clientes_ListarPorApellido: Lista clientes por apellido.
+sp_Clientes_ContarPorApellido: Cuenta clientes por apellido.
+sp_Clientes_ObtenerPorDNI: Obtiene cliente por DNI.
+sp_Clientes_Existe: Verifica si existe un cliente por id.
+sp_Clientes_ListarOrdenadoPorApellido: Lista clientes ordenados por apellido.
+sp_Clientes_ListarLimite: Lista clientes con límite indicado.
+sp_Clientes_ActualizarTelefono: Actualiza teléfono de un cliente.
+sp_Clientes_ClientesConVentas: Lista clientes junto con datos de sus ventas.

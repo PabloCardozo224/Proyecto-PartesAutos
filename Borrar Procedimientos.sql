@@ -1,0 +1,155 @@
+USE Auto_partes;
+
+-- MARCAS
+DROP PROCEDURE IF EXISTS sp_Marcas_Insertar;
+DROP PROCEDURE IF EXISTS sp_Marcas_Actualizar;
+DROP PROCEDURE IF EXISTS sp_Marcas_Eliminar;
+DROP PROCEDURE IF EXISTS sp_Marcas_ObtenerPorId;
+DROP PROCEDURE IF EXISTS sp_Marcas_Listar;
+DROP PROCEDURE IF EXISTS sp_Marcas_Contar;
+DROP PROCEDURE IF EXISTS sp_Marcas_BuscarPorNombre;
+DROP PROCEDURE IF EXISTS sp_Marcas_ObtenerPorNombreExacto;
+DROP PROCEDURE IF EXISTS sp_Marcas_ListarOrdenadoPorNombre;
+DROP PROCEDURE IF EXISTS sp_Marcas_ListarOrdenadoDescendente;
+DROP PROCEDURE IF EXISTS sp_Marcas_ObtenerPrimera;
+DROP PROCEDURE IF EXISTS sp_Marcas_ObtenerUltima;
+DROP PROCEDURE IF EXISTS sp_Marcas_Existe;
+DROP PROCEDURE IF EXISTS sp_Marcas_ContarPorNombre;
+DROP PROCEDURE IF EXISTS sp_Marcas_EliminarPorNombre;
+DROP PROCEDURE IF EXISTS sp_Marcas_ListarConProductos;
+DROP PROCEDURE IF EXISTS sp_Marcas_ListarSinProductos;
+DROP PROCEDURE IF EXISTS sp_Marcas_ListarLimite;
+DROP PROCEDURE IF EXISTS sp_Marcas_InsertarSiNoExiste;
+DROP PROCEDURE IF EXISTS sp_Marcas_ListarTopPorVentas;
+
+-- EMPLEADOS
+DROP PROCEDURE IF EXISTS sp_Empleados_Insertar;
+DROP PROCEDURE IF EXISTS sp_Empleados_Actualizar;
+DROP PROCEDURE IF EXISTS sp_Empleados_Eliminar;
+DROP PROCEDURE IF EXISTS sp_Empleados_ObtenerPorId;
+DROP PROCEDURE IF EXISTS sp_Empleados_Listar;
+DROP PROCEDURE IF EXISTS sp_Empleados_Contar;
+DROP PROCEDURE IF EXISTS sp_Empleados_BuscarPorNombre;
+DROP PROCEDURE IF EXISTS sp_Empleados_BuscarPorApellido;
+DROP PROCEDURE IF EXISTS sp_Empleados_BuscarPorDNI;
+DROP PROCEDURE IF EXISTS sp_Empleados_BuscarPorPuesto;
+DROP PROCEDURE IF EXISTS sp_Empleados_BuscarPorRol;
+DROP PROCEDURE IF EXISTS sp_Empleados_ContarPorPuesto;
+DROP PROCEDURE IF EXISTS sp_Empleados_ContarPorRol;
+DROP PROCEDURE IF EXISTS sp_Empleados_Existe;
+DROP PROCEDURE IF EXISTS sp_Empleados_ListarOrdenadoPorApellido;
+DROP PROCEDURE IF EXISTS sp_Empleados_ListarLimite;
+DROP PROCEDURE IF EXISTS sp_Empleados_ActualizarTelefono;
+DROP PROCEDURE IF EXISTS sp_Empleados_ListarPorPuestoYRol;
+DROP PROCEDURE IF EXISTS sp_Empleados_TopVentas;
+DROP PROCEDURE IF EXISTS sp_Empleados_VentasPorEmpleado;
+
+-- PRODUCTOS
+DROP PROCEDURE IF EXISTS sp_Productos_Insertar;
+DROP PROCEDURE IF EXISTS sp_Productos_Actualizar;
+DROP PROCEDURE IF EXISTS sp_Productos_Eliminar;
+DROP PROCEDURE IF EXISTS sp_Productos_ObtenerPorId;
+DROP PROCEDURE IF EXISTS sp_Productos_Listar;
+DROP PROCEDURE IF EXISTS sp_Productos_Contar;
+DROP PROCEDURE IF EXISTS sp_Productos_BuscarPorNombre;
+DROP PROCEDURE IF EXISTS sp_Productos_BuscarPorTipoParte;
+DROP PROCEDURE IF EXISTS sp_Productos_BuscarPorMarca;
+DROP PROCEDURE IF EXISTS sp_Productos_BuscarPorTipoVehiculo;
+DROP PROCEDURE IF EXISTS sp_Productos_FiltrarPorPrecioMayor;
+DROP PROCEDURE IF EXISTS sp_Productos_FiltrarPorPrecioMenor;
+DROP PROCEDURE IF EXISTS sp_Productos_ListarPorTamano;
+DROP PROCEDURE IF EXISTS sp_Productos_ListarPorColor;
+DROP PROCEDURE IF EXISTS sp_Productos_ListarPorModelo;
+DROP PROCEDURE IF EXISTS sp_Productos_ContarPorTipoParte;
+DROP PROCEDURE IF EXISTS sp_Productos_ContarPorMarca;
+DROP PROCEDURE IF EXISTS sp_Productos_ActualizarPrecio;
+DROP PROCEDURE IF EXISTS sp_Productos_ListarConMarca;
+DROP PROCEDURE IF EXISTS sp_Productos_StockBajo;
+
+-- PAGOS
+DROP PROCEDURE IF EXISTS sp_Pagos_Insertar;
+DROP PROCEDURE IF EXISTS sp_Pagos_Actualizar;
+DROP PROCEDURE IF EXISTS sp_Pagos_Eliminar;
+DROP PROCEDURE IF EXISTS sp_Pagos_ObtenerPorId;
+DROP PROCEDURE IF EXISTS sp_Pagos_Listar;
+DROP PROCEDURE IF EXISTS sp_Pagos_Contar;
+DROP PROCEDURE IF EXISTS sp_Pagos_BuscarPorMetodo;
+DROP PROCEDURE IF EXISTS sp_Pagos_BuscarPorEstado;
+DROP PROCEDURE IF EXISTS sp_Pagos_FiltrarPorMontoMayor;
+DROP PROCEDURE IF EXISTS sp_Pagos_FiltrarPorMontoMenor;
+DROP PROCEDURE IF EXISTS sp_Pagos_ListarConfirmados;
+DROP PROCEDURE IF EXISTS sp_Pagos_ListarPendientes;
+DROP PROCEDURE IF EXISTS sp_Pagos_ListarDenegados;
+DROP PROCEDURE IF EXISTS sp_Pagos_ContarPorMetodo;
+DROP PROCEDURE IF EXISTS sp_Pagos_ContarPorEstado;
+DROP PROCEDURE IF EXISTS sp_Pagos_SumarMontoConfirmado;
+DROP PROCEDURE IF EXISTS sp_Pagos_SumarMontoPorEstado;
+DROP PROCEDURE IF EXISTS sp_Pagos_PromedioMonto;
+DROP PROCEDURE IF EXISTS sp_Pagos_ActualizarEstado;
+DROP PROCEDURE IF EXISTS sp_Pagos_ObtenerUltimoPago;
+
+-- ENVIOS
+DROP PROCEDURE IF EXISTS sp_Envios_Insertar;
+DROP PROCEDURE IF EXISTS sp_Envios_Actualizar;
+DROP PROCEDURE IF EXISTS sp_Envios_Eliminar;
+DROP PROCEDURE IF EXISTS sp_Envios_ObtenerPorId;
+DROP PROCEDURE IF EXISTS sp_Envios_Listar;
+DROP PROCEDURE IF EXISTS sp_Envios_Contar;
+DROP PROCEDURE IF EXISTS sp_Envios_BuscarPorBarrio;
+DROP PROCEDURE IF EXISTS sp_Envios_BuscarPorCalle;
+DROP PROCEDURE IF EXISTS sp_Envios_ListarPorProvincia;
+DROP PROCEDURE IF EXISTS sp_Envios_ListarPorLocalidad;
+DROP PROCEDURE IF EXISTS sp_Envios_ContarPorProvincia;
+DROP PROCEDURE IF EXISTS sp_Envios_ContarPorLocalidad;
+DROP PROCEDURE IF EXISTS sp_Envios_ListarOrdenadoPorProvincia;
+DROP PROCEDURE IF EXISTS sp_Envios_ListarOrdenadoPorLocalidad;
+DROP PROCEDURE IF EXISTS sp_Envios_BuscarPorNumeroCasa;
+DROP PROCEDURE IF EXISTS sp_Envios_ActualizarDireccion;
+DROP PROCEDURE IF EXISTS sp_Envios_ObtenerUltimoEnvio;
+DROP PROCEDURE IF EXISTS sp_Envios_ListarLimite;
+DROP PROCEDURE IF EXISTS sp_Envios_ContarPorBarrio;
+DROP PROCEDURE IF EXISTS sp_Envios_EnviosPorProvincia;
+
+-- VENTAS
+DROP PROCEDURE IF EXISTS sp_Ventas_Insertar;
+DROP PROCEDURE IF EXISTS sp_Ventas_Actualizar;
+DROP PROCEDURE IF EXISTS sp_Ventas_Eliminar;
+DROP PROCEDURE IF EXISTS sp_Ventas_ObtenerPorId;
+DROP PROCEDURE IF EXISTS sp_Ventas_Listar;
+DROP PROCEDURE IF EXISTS sp_Ventas_Contar;
+DROP PROCEDURE IF EXISTS sp_Ventas_BuscarPorTipoPedido;
+DROP PROCEDURE IF EXISTS sp_Ventas_BuscarPorFecha;
+DROP PROCEDURE IF EXISTS sp_Ventas_BuscarPorEmpleado;
+DROP PROCEDURE IF EXISTS sp_Ventas_BuscarPorProducto;
+DROP PROCEDURE IF EXISTS sp_Ventas_ListarPorFechaMayor;
+DROP PROCEDURE IF EXISTS sp_Ventas_ListarPorFechaMenor;
+DROP PROCEDURE IF EXISTS sp_Ventas_ContarPorTipoPedido;
+DROP PROCEDURE IF EXISTS sp_Ventas_ContarPorEmpleado;
+DROP PROCEDURE IF EXISTS sp_Ventas_SumarCantidadProductos;
+DROP PROCEDURE IF EXISTS sp_Ventas_PromedioCantidadProductos;
+DROP PROCEDURE IF EXISTS sp_Ventas_ListarOrdenadoPorFechaDesc;
+DROP PROCEDURE IF EXISTS sp_Ventas_ActualizarCantidadProductos;
+DROP PROCEDURE IF EXISTS sp_Ventas_DetalleCompleto;
+DROP PROCEDURE IF EXISTS sp_Ventas_TotalFacturado;
+
+-- CLIENTES
+DROP PROCEDURE IF EXISTS sp_Clientes_Insertar;
+DROP PROCEDURE IF EXISTS sp_Clientes_Actualizar;
+DROP PROCEDURE IF EXISTS sp_Clientes_Eliminar;
+DROP PROCEDURE IF EXISTS sp_Clientes_ObtenerPorId;
+DROP PROCEDURE IF EXISTS sp_Clientes_Listar;
+DROP PROCEDURE IF EXISTS sp_Clientes_Contar;
+DROP PROCEDURE IF EXISTS sp_Clientes_BuscarPorNombre;
+DROP PROCEDURE IF EXISTS sp_Clientes_BuscarPorApellido;
+DROP PROCEDURE IF EXISTS sp_Clientes_BuscarPorDNI;
+DROP PROCEDURE IF EXISTS sp_Clientes_BuscarPorTelefono;
+DROP PROCEDURE IF EXISTS sp_Clientes_BuscarPorDireccion;
+DROP PROCEDURE IF EXISTS sp_Clientes_BuscarPorVenta;
+DROP PROCEDURE IF EXISTS sp_Clientes_ListarPorApellido;
+DROP PROCEDURE IF EXISTS sp_Clientes_ContarPorApellido;
+DROP PROCEDURE IF EXISTS sp_Clientes_Existe;
+DROP PROCEDURE IF EXISTS sp_Clientes_ListarOrdenadoPorApellido;
+DROP PROCEDURE IF EXISTS sp_Clientes_ListarLimite;
+DROP PROCEDURE IF EXISTS sp_Clientes_ActualizarTelefono;
+DROP PROCEDURE IF EXISTS sp_Clientes_ClientesConVentas;
+DROP PROCEDURE IF EXISTS sp_Clientes_TopCompras;
