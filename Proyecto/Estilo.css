@@ -168,11 +168,92 @@ body {
     display: flex;
   }
 
-  .tablas{
-    border: 1px solid #885df1;
-  }
-.tabla1{
-    border:darkgray 2cm solid;
+/* Contenedor general: barra + contenido en horizontal */
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Barra negra: no se modifica su aspecto */
+.sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  background: #1a1d21;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* Contenido: todo en fila, pegado a la izquierda y arriba */
+.contenido {
+  flex: 1;
+  gap: 0;
+  padding: 0;
+  background: #f2f3f5;
+  margin-left: 0;
+}
+.btn_rojo{
+  text-align: right;
+}
+/* Cada sección */
+.barra-boton {
+  display: flex;
+  justify-content: flex-end;   /* manda el botón a la derecha */
+  margin-bottom: 12px;         /* separación con la tabla */
+}
+
+.bloque h2 {
+  margin: 0 0 12px 0;
+  font-size: 1.6rem;
+}
+
+.bloque-panel {
+  width: 220px;
+  text-align: center;
+  margin-left: 80px;
+  
+}
+
+.bloque-productos {
+  flex: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: 100px;
+  margin-right: 1px;
+  margin-left: 35px;
+}
+
+.bloque-info {
+  position: fixed;
+  bottom: 0;
+  left: 240px;
+  right: 0;
+  padding: 12px 20px;
+  background: #fff;
+  width: 220px;
+}
+
+/* Titulo a la izquierda y boton a la derecha */
+.encabezado {
+  display: flex;
+  justify-content: space-between;  
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.encabezado h2 {
+  margin: 0;
+}
+
+/* Tabla */
+table {
+  background: #fff;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px 20px;
+  text-align: left;
 }
   /* ===== Barra lateral ===== */
   .sidebar {
