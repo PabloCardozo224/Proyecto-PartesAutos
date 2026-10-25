@@ -1,0 +1,84 @@
+========================================================
+1. TABLA: MARCAS (trg_marcas_validar_duplicado)
+========================================================
+Momento: BEFORE INSERT (Se ejecuta antes de que el nuevo registro se guarde en la tabla).
+Paso a paso de su lógica:
+Se declara una variable interna llamada v_conteo para almacenar un número.
+El trigger hace un SELECT COUNT(*) en la tabla Marcas buscando si ya existe el nombre que se quiere ingresar (NEW.nombre).
+Para evitar que metan la misma marca con sutiles diferencias de tipeo, usa la función LOWER(), la cual pasa tanto el nombre guardado como el nuevo a minúsculas (así detecta que "Ford", "FORD" o "ford" son lo mismo).
+Si el resultado de v_conteo es mayor a 0, significa que esa marca ya existe.
+El trigger activa un SIGNAL SQLSTATE '45000', lo que cancela inmediatamente la inserción y le muestra al usuario el mensaje de error personalizado.
+
+========================================================
+2. TABLA: EMPLEADOS (trg_empleados_usuario_unico)
+========================================================
+Momento: BEFORE INSERT (Se ejecuta antes de que el empleado se dé de alta).
+Paso a paso de su lógica:
+El sistema de inicio de sesión web necesita que cada empleado tenga un alias único para no confundir cuentas.
+El trigger busca en la tabla Empleados cuántas filas tienen exactamente el mismo Usuario que se intenta registrar (NEW.Usuario).
+Guarda esa cantidad en la variable v_usuario_existe.
+Evalúa con un IF si esa variable es mayor a cero.
+Si el usuario ya está tomado por otra persona, el trigger frena el INSERT mediante el código de excepción '45000', impidiendo credenciales duplicadas en el sistema.
+
+========================================================
+3. TABLA: PRODUCTOS (trg_productos_prevenir_negativos)
+========================================================
+Momento: BEFORE UPDATE (Se ejecuta antes de que se aplique una modificación en un producto existente).
+Paso a paso de su lógica:
+Este trigger actúa como un filtro de seguridad contra errores de tipeo manual del personal técnico o administrativo.
+Revisa las dos columnas comerciales más críticas: el precio que va a quedar (NEW.precio) y la cantidad física en stock que va a quedar (NEW.Cantidad).
+El condicional verifica si alguno de los dos valores es menor a cero (< 0).
+Si un empleado intentó poner un precio de -$150 o un stock de -5 unidades, la condición se cumple.
+Se dispara el error y el cambio se descarta por completo, protegiendo el valor real del inventario.
+
+========================================================
+4. TABLA: ENVIOS (trg_envios_validar_altura)
+========================================================
+Momento: BEFORE INSERT (Se ejecuta antes de guardar una nueva dirección de envío).
+Paso a paso de su lógica:
+En el proceso de logística, una calle necesita obligatoriamente una altura numérica real para que el correo sepa a dónde ir.
+El trigger analiza el campo de la altura domiciliaria ingresada (NEW.N_casa).
+Comprueba si el número es menor o igual a cero (<= 0).
+Si alguien introduce el número 0 o un valor negativo por apuro o distracción, el trigger frena el proceso.
+Lanza la excepción y cancela la creación del envío para asegurar que no salgan camiones con datos postales imposibles de rastrear.
+
+========================================================
+5. TABLA: PAGOS (trg_pagos_proteger_confirmados)
+========================================================
+Momento: BEFORE UPDATE (Se ejecuta antes de alterar un comprobante de pago).
+Paso a paso de su lógica:
+Este trigger está diseñado para la seguridad financiera y auditoría de la caja del negocio.
+Evalúa el estado anterior de la transacción, usando el prefijo OLD.Estado (el valor que ya estaba guardado en el disco).
+Si el estado original ya figura como 'Confirmado' (el dinero entró con éxito), la condición se activa.
+Bloquea cualquier intento de modificar los datos de ese pago (como su monto o método).
+Cancela la operación con un mensaje de error, evitando fraudes donde alguien intente alterar transacciones viejas para desviar fondos.
+
+========================================================
+6. TABLA: VENTAS (Posee dos triggers estratégicos)
+========================================================
+A. Validación previa (trg_ventas_bloquear_sin_stock)
+Momento: BEFORE INSERT (Se ejecuta antes de procesar el pedido).
+Paso a paso de su lógica:
+Declara la variable v_stock_disponible.
+Va a la tabla Productos y extrae cuántas unidades quedan del repuesto específico que el cliente quiere comprar (NEW.Id_Producto).
+Si la base de datos detecta que no hay existencias en el depósito (v_stock_disponible = 0), activa el primer error avisando que el artículo está totalmente agotado.
+Si hay mercadería pero la cantidad que el cliente pide (NEW.cantidad_productos) supera las unidades reales de la estantería, salta al segundo error.
+En cualquiera de los dos casos defectuosos, se frena la venta evitando compromisos comerciales falsos.
+B. Sincronización posterior (trg_ventas_descontar_stock)
+Momento: AFTER INSERT (Se ejecuta de forma automática milésimas de segundo después de que la venta pasó el filtro anterior y se guardó con éxito).
+Paso a paso de su lógica:
+Al concretarse la operación, la mercadería ya salió del local físico, por lo que hay que impactar el almacén digital.
+Ejecuta una orden directa de UPDATE sobre la tabla Productos.
+Agarra la cantidad actual del producto vendido y le resta el número exacto de piezas despachadas en la venta (NEW.cantidad_productos).
+Utiliza la cláusula WHERE Id_Producto = NEW.Id_Producto para asegurarse de modificar únicamente el repuesto involucrado en esa transacción.
+
+========================================================
+7. TABLA: CLIENTES (trg_clientes_validar_dni)
+========================================================
+Momento: BEFORE INSERT (Se ejecuta antes de registrar una nueva ficha de cliente).
+Paso a paso de su lógica:
+Para la facturación oficial del local, no se pueden aceptar perfiles de clientes fantasma o anónimos sin documentación real.
+Analiza el Documento Nacional de Identidad o CUIT ingresado (NEW.DNI).
+Comprueba mediante un IF si la numeración es menor o igual a cero (<= 0).
+Si detecta un valor inválido, interrumpe el flujo con la instrucción SIGNAL SQLSTATE.
+La inserción se rechaza, garantizando que el listado de clientes mantenga un estándar de calidad e integridad de datos limpio para los reportes mensuales.
