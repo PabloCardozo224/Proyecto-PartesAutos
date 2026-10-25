@@ -161,12 +161,16 @@ DELIMITER ;
 -- ============================================================
 -- ==================== EMPLEADOS ==============================
 -- ============================================================
-
 DELIMITER //
-CREATE PROCEDURE sp_Empleados_Insertar(IN p_Nombre VARCHAR(35), IN p_Apellido VARCHAR(35), IN p_DNI INT, IN p_Telefono VARCHAR(15), IN p_Puesto VARCHAR(30), IN p_Rol VARCHAR(35))
+CREATE PROCEDURE sp_Empleados_Insertar(
+    IN p_Nombre VARCHAR(35), IN p_Apellido VARCHAR(35), 
+    IN p_Usuario VARCHAR(45), IN p_Contrasena VARCHAR(45), 
+    IN p_DNI INT, IN p_Telefono VARCHAR(15), 
+    IN p_Puesto VARCHAR(30), IN p_Rol VARCHAR(35)
+)
 BEGIN
-    INSERT INTO Empleados(Nombre, Apellido, DNI, Telefono, Puesto, Rol)
-    VALUES(p_Nombre, p_Apellido, p_DNI, p_Telefono, p_Puesto, p_Rol);
+    INSERT INTO Empleados(Nombre, Apellido, Usuario, contraseña, DNI, Telefono, Puesto, Rol)
+    VALUES(p_Nombre, p_Apellido, p_Usuario, p_Contrasena, p_DNI, p_Telefono, p_Puesto, p_Rol);
 END //
 DELIMITER ;
 
@@ -941,12 +945,15 @@ DELIMITER ;
 -- ============================================================
 -- ==================== CLIENTES ===============================
 -- ============================================================
-
 DELIMITER //
-CREATE PROCEDURE sp_Clientes_Insertar(IN p_Nombre VARCHAR(35), IN p_Apellido VARCHAR(35), IN p_DNI INT, IN p_Telefono VARCHAR(15), IN p_Direccion VARCHAR(45), IN p_id_Ventas INT)
+CREATE PROCEDURE sp_Clientes_Insertar(
+    IN p_Nombre VARCHAR(35), IN p_Apellido VARCHAR(35), 
+    IN p_Usuario VARCHAR(45), IN p_Contrasena VARCHAR(45), -- ¡Agregados!
+    IN p_DNI INT, IN p_Telefono VARCHAR(15), IN p_Direccion VARCHAR(45), IN p_id_Ventas INT
+)
 BEGIN
-    INSERT INTO Clientes(Nombre, Apellido, DNI, Telefono, Direccion, id_Ventas)
-    VALUES(p_Nombre, p_Apellido, p_DNI, p_Telefono, p_Direccion, p_id_Ventas);
+    INSERT INTO Clientes(Nombre, Apellido, Usuario, contraseña, DNI, Telefono, Direccion, id_Ventas)
+    VALUES(p_Nombre, p_Apellido, p_Usuario, p_Contrasena, p_DNI, p_Telefono, p_Direccion, p_id_Ventas);
 END //
 DELIMITER ;
 
