@@ -1,0 +1,135 @@
+-- ========================================================
+-- 1. TABLA: MARCAS
+-- ========================================================
+DELIMITER //
+CREATE TRIGGER trg_marcas_validar_duplicado
+BEFORE INSERT ON Marcas
+FOR EACH ROW
+BEGIN
+    DECLARE v_conteo INT;
+    
+    SELECT COUNT(*) INTO v_conteo 
+    FROM Marcas 
+    WHERE LOWER(nombre) = LOWER(NEW.nombre);
+    
+    IF v_conteo > 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: El nombre de la marca ya se encuentra registrado.';
+    END IF;
+END //
+DELIMITER ;
+
+-- ========================================================
+-- 2. TABLA: EMPLEADOS
+-- ========================================================
+DELIMITER //
+CREATE TRIGGER trg_empleados_usuario_unico
+BEFORE INSERT ON Empleados
+FOR EACH ROW
+BEGIN
+    DECLARE v_usuario_existe INT;
+    
+    SELECT COUNT(*) INTO v_usuario_existe 
+    FROM Empleados 
+    WHERE Usuario = NEW.Usuario;
+    
+    IF v_usuario_existe > 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: El nombre de usuario de sistema ya está ocupado por otro empleado.';
+    END IF;
+END //
+DELIMITER ;
+
+-- ========================================================
+-- 3. TABLA: PRODUCTOS
+-- ========================================================
+DELIMITER //
+CREATE TRIGGER trg_productos_prevenir_negativos
+BEFORE UPDATE ON Productos
+FOR EACH ROW
+BEGIN
+    IF NEW.precio < 0 OR NEW.Cantidad < 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: El precio y el stock de las autopartes deben ser valores positivos.';
+    END IF;
+END //
+DELIMITER ;
+
+-- ========================================================
+-- 4. TABLA: ENVIOS
+-- ========================================================
+DELIMITER //
+CREATE TRIGGER trg_envios_validar_altura
+BEFORE INSERT ON Envios
+FOR EACH ROW
+BEGIN
+    IF NEW.N_casa <= 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: La altura catastral de la calle (N_casa) debe ser mayor a cero.';
+    END IF;
+END //
+DELIMITER ;
+
+-- ========================================================
+-- 5. TABLA: PAGOS
+-- ========================================================
+DELIMITER //
+CREATE TRIGGER trg_pagos_proteger_confirmados
+BEFORE UPDATE ON Pagos
+FOR EACH ROW
+BEGIN
+    IF OLD.Estado = 'Confirmado' THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error de Caja: No se permite modificar una transacción que ya fue aprobada y confirmada.';
+    END IF;
+END //
+DELIMITER ;
+
+-- ========================================================
+-- 6. TABLA: VENTAS
+-- ========================================================
+DELIMITER //
+CREATE TRIGGER trg_ventas_bloquear_sin_stock
+BEFORE INSERT ON Ventas
+FOR EACH ROW
+BEGIN
+    DECLARE v_stock_disponible INT;
+
+    SELECT Cantidad INTO v_stock_disponible
+    FROM   Productos
+    WHERE  Id_Producto = NEW.Id_Producto;
+
+    IF v_stock_disponible IS NULL OR v_stock_disponible = 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: El producto seleccionado se encuentra agotado (Sin Stock).';
+    ELIF NEW.cantidad_productos > v_stock_disponible THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: La cantidad solicitada supera el stock disponible en depósito.';
+    END IF;
+END //
+
+CREATE TRIGGER trg_ventas_descontar_stock
+AFTER INSERT ON Ventas
+FOR EACH ROW
+BEGIN
+    UPDATE Productos
+    SET    Cantidad = Cantidad - NEW.cantidad_productos
+    WHERE  Id_Producto = NEW.Id_Producto;
+END //
+DELIMITER ;
+
+-- ========================================================
+-- 7. TABLA: CLIENTES
+-- ========================================================
+DELIMITER //
+CREATE TRIGGER trg_clientes_validar_dni
+BEFORE INSERT ON Clientes
+FOR EACH ROW
+BEGIN
+    IF NEW.DNI <= 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: El número de DNI / CUIT ingresado no es válido.';
+    END IF;
+END //
+DELIMITER ;
+
