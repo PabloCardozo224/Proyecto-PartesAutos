@@ -1,0 +1,50 @@
+========================================================
+1. VISTA: vw_productos_sin_stock
+========================================================
+Qué hace: Filtra de forma inmediata la tabla de repuestos para aislar los artículos agotados.
+Paso a paso de su lógica:
+El motor de base de datos lee la tabla completa de Productos.
+Evalúa la condición WHERE Cantidad = 0.
+Separa el identificador, el nombre del repuesto y el precio únicamente de aquellos registros que se quedaron sin stock físico.
+Para qué sirve en el negocio: Es la consulta directa que el encargado del depósito abre por la mañana para armar la lista de reabastecimiento urgente de mercadería.
+
+========================================================
+2. VISTA: vw_pagos_confirmados
+========================================================
+Qué hace: Separa los cobros exitosos de aquellos que quedaron pendientes de acreditación o fueron rechazados.
+Paso a paso de su lógica:
+Revisa la tabla Pagos, que contiene todas las intenciones de cobro del sistema web y de las terminales de tarjeta de débito.
+Ejecuta el filtro WHERE Estado = 'Confirmado'.
+Descarta los registros que dicen 'Pendiente' o 'Denegado', mostrando una lista limpia de las transacciones exitosas con su respectivo monto.
+Para qué sirve en el negocio: Le permite al sector de contabilidad o administración ver los ingresos de dinero reales y reales de la caja del día.
+
+========================================================
+3. VISTA: vw_empleados_administradores
+========================================================
+Qué hace: Identifica de manera rápida al personal jerárquico o con permisos elevados dentro del sistema.
+Paso a paso de su lógica:
+Examina la tabla Empleados.
+Evalúa la columna de control de accesos mediante WHERE Rol = 'administrador'.
+Oculta datos sensibles de la tabla (como la columna contraseña) y devuelve una nómina con el nombre, apellido, usuario y puesto de los operadores administradores.
+Para qué sirve en el negocio: Auditoría de seguridad. Sirve para controlar quiénes tienen acceso al panel de control total de la empresa para evitar intrusos.
+
+========================================================
+4. VISTA: vw_ventas_recientes
+========================================================
+Qué hace: Ordena cronológicamente la actividad comercial del local, poniendo los movimientos más nuevos al principio.
+Paso a paso de su lógica:
+Toma la información registrada en la tabla operativa de Ventas.
+Aplica la cláusula ORDER BY Fecha_venta DESC (DESC significa descendente, es decir, de lo más reciente a lo más antiguo).
+Para qué sirve en el negocio: Es ideal para el mostrador de atención. Permite que el vendedor vea en la pantalla principal cuáles fueron las últimas operaciones realizadas sin necesidad de buscar manualmente.
+
+========================================================
+5. VISTA: vw_ventas_mensuales_totales
+========================================================
+Qué hace: Es la vista más avanzada del grupo. Agrupa y totaliza el rendimiento de la fábrica dividiéndolo por mes y año.
+Paso a paso de su lógica:
+Realiza un INNER JOIN entre las tablas Ventas y Productos para poder cruzar cuántas piezas se vendieron con el precio de lista que tiene cada artículo.
+Utiliza las funciones YEAR() y MONTH() para romper la fecha completa (ej: 2026-10-25) y extraer por separado el año (2026) y el mes (10).
+Ejecuta la función de agregación SUM(v.cantidad_productos) para acumular todas las autopartes vendidas en ese ciclo.
+Multiplica las unidades por el precio de cada una y las suma con SUM(v.cantidad_productos * p.precio) para dar el total de facturación bruta.
+Agrupa los datos mediante GROUP BY para que el motor cree una única fila por cada mes del año.
+Para qué sirve en el negocio: Esta vista alimenta directamente los gráficos de barras y de torta de tu Dashboard. El administrador puede medir si el negocio está creciendo o vendiendo menos en comparación con los meses anteriores
